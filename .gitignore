@@ -1,0 +1,5 @@
+/CaptureTheFlagAI/Library
+/CaptureTheFlagAI/Temp
+*.sln
+*.csproj
+/CaptureTheFlagAI/.vs
