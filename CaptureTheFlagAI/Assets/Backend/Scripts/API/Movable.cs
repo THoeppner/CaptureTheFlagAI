@@ -8,6 +8,8 @@ namespace CaptureTheFlagAI.API
     /// </summary>
     public interface Movable 
     {
+
+
         /// <summary>
         /// Moves the object to destination with walk speed
         /// </summary>
