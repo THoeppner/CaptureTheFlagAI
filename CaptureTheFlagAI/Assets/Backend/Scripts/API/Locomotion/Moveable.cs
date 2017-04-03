@@ -13,5 +13,7 @@ namespace CaptureTheFlagAI.API.Locomotion
         /// </summary>
         /// <param name="destination"></param>
         void MoveTo(Vector3 destination, float speed);
+
+        void MoveDirection(Vector3 direction, float speed);
     }
 }

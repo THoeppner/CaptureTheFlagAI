@@ -1,7 +1,7 @@
-﻿using CaptureTheFlagAI.Impl.Soldier;
-using System.Collections;
-using System.Collections.Generic;
+﻿using CaptureTheFlagAI.API.Locomotion;
+using CaptureTheFlagAI.Impl.Soldier;
 using UnityEngine;
+using UnityEngine.Assertions;
 
 namespace CaptureTheFlagAI.API.Soldier
 {
@@ -10,15 +10,15 @@ namespace CaptureTheFlagAI.API.Soldier
         private SoldierBase soldier;
 
         // Use this for initialization
-        void Start()
+        void Awake()
         {
-
+            soldier = GetComponent<SoldierBase>();
+            Assert.IsNotNull(soldier, "No SoldierBase component is attached to gameobject " + gameObject.name);
         }
 
-        // Update is called once per frame
-        void Update()
+        public Moveable GetMoveable()
         {
-
+            return soldier.GetMoveable();
         }
     }
 }

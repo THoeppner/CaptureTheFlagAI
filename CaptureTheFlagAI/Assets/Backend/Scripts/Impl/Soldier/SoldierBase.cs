@@ -1,23 +1,27 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using CaptureTheFlagAI.API.Locomotion;
+using CaptureTheFlagAI.Impl.Locomotion;
 using UnityEngine;
+using UnityEngine.Assertions;
 
 namespace CaptureTheFlagAI.Impl.Soldier
 {
 
-    public class SoldierBase : MonoBehaviour
+    public abstract class SoldierBase : MonoBehaviour
     {
-
-        // Use this for initialization
-        void Start()
+        protected Moveable moveable;
+        public Moveable GetMoveable()
         {
-
+            return moveable;
         }
 
-        // Update is called once per frame
-        void Update()
+        void Awake()
         {
+            moveable = GetComponent<MoveableBase>() as Moveable;
+            Assert.IsNotNull(moveable, "No MoveableImpl component is attached to gameobject " + gameObject.name);
 
+            AwakeInternal();
         }
+
+        protected virtual void AwakeInternal() { }
     }
 }
