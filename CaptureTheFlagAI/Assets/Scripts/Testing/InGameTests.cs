@@ -39,14 +39,14 @@ public class InGameTests : MonoBehaviour
             infantryTarget.y = 0;
         }
 
-        if ((sniperTarget - sniper.GetMoveable().GetPosition()).magnitude > targetReachedDistance)
-            sniper.GetMoveable().MoveTowards(sniperTarget, speed);
+        if ((sniperTarget - sniper.Moveable.GetPosition()).magnitude > targetReachedDistance)
+            sniper.Moveable.MoveTowards(sniperTarget, speed);
         else
-            sniper.GetMoveable().Stop();
+            sniper.Moveable.Stop();
 
-        if ((infantryTarget - infantry.GetMoveable().GetPosition()).magnitude > targetReachedDistance)
-            infantry.GetMoveable().MoveTowards(infantryTarget, speed);
+        if ((infantryTarget - infantry.Moveable.GetPosition()).magnitude > targetReachedDistance)
+            infantry.Moveable.MoveTowards(infantryTarget, speed);
         else
-            infantry.GetMoveable().Stop();
+            infantry.Moveable.Stop();
     }
 }

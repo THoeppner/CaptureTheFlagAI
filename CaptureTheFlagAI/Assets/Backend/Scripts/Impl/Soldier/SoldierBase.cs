@@ -5,9 +5,14 @@ using UnityEngine.Assertions;
 
 namespace CaptureTheFlagAI.Impl.Soldier
 {
-
     public abstract class SoldierBase : MonoBehaviour
     {
+        [SerializeField]
+        protected float maxMoveSpeed;
+
+        [SerializeField]
+        protected float maxRotationalSpeed;
+
         protected Moveable moveable;
         public Moveable GetMoveable()
         {
@@ -16,8 +21,7 @@ namespace CaptureTheFlagAI.Impl.Soldier
 
         void Awake()
         {
-            moveable = GetComponent<MoveableBase>() as Moveable;
-            Assert.IsNotNull(moveable, "No Moveable component is attached to gameobject " + gameObject.name);
+            moveable = new MoveableBase(gameObject, maxMoveSpeed, maxRotationalSpeed);
 
             AwakeInternal();
         }

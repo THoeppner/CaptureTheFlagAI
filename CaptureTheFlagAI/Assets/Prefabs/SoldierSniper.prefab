@@ -356,7 +356,6 @@ GameObject:
   - component: {fileID: 54867446419105608}
   - component: {fileID: 114817613042471022}
   - component: {fileID: 114820474368366522}
-  - component: {fileID: 114211060195808868}
   m_Layer: 0
   m_Name: SoldierSniper
   m_TagString: Untagged
@@ -933,19 +932,6 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &114211060195808868
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1887864909056334}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5ad90ee06b283634bab3f50f09be1974, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxMoveSpeed: 2.5
-  maxRotationalSpeed: 180
 --- !u!114 &114403486503327328
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -969,6 +955,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db5e86280949dda418960c41b69a6618, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxMoveSpeed: 3
+  maxRotationalSpeed: 180
 --- !u!114 &114820474368366522
 MonoBehaviour:
   m_ObjectHideFlags: 1

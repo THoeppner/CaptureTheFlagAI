@@ -16,9 +16,9 @@ namespace CaptureTheFlagAI.API.Soldier
             Assert.IsNotNull(soldier, "No SoldierBase component is attached to gameobject " + gameObject.name);
         }
 
-        public Moveable GetMoveable()
+        public Moveable Moveable
         {
-            return soldier.GetMoveable();
+            get { return soldier.GetMoveable(); }
         }
     }
 }

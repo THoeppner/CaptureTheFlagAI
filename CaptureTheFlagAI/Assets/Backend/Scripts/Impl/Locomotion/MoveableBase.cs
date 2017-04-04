@@ -3,16 +3,14 @@ using CaptureTheFlagAI.API.Locomotion;
 
 namespace CaptureTheFlagAI.Impl.Locomotion
 {
-    public class MoveableBase : MonoBehaviour, Moveable
+    public class MoveableBase : Moveable
     {
-        [SerializeField]
         protected float maxMoveSpeed;
 
-        [SerializeField]
         protected float maxRotationalSpeed;
 
-        protected new Rigidbody rigidbody;
-        protected new Transform transform;
+        protected Rigidbody rigidbody;
+        protected Transform transform;
 
         protected Vector3 moveVector;
 
@@ -47,13 +45,16 @@ namespace CaptureTheFlagAI.Impl.Locomotion
 
         #endregion
 
-        #region MonoBehaviour
+        #region Constructor
 
-        void Awake()
+        public MoveableBase(GameObject gameObject, float maxMoveSpeed, float maxRotationalSpeed)
         {
-            transform = GetComponent<Transform>();
+            this.maxMoveSpeed = maxMoveSpeed;
+            this.maxRotationalSpeed = maxRotationalSpeed;
 
-            rigidbody = GetComponent<Rigidbody>();
+            transform = gameObject.transform;
+
+            rigidbody = gameObject.GetComponent<Rigidbody>();
             UnityEngine.Assertions.Assert.IsNotNull(rigidbody, "No Rigidbody component is attached to gameobject " + gameObject.name);
         }
 

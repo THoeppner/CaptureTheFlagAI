@@ -1,9 +1,9 @@
-﻿using CaptureTheFlagAI.API.Soldier;
+﻿using CaptureTheFlagAI.API.Locomotion;
+using CaptureTheFlagAI.Impl.Soldier;
 using UnityEngine;
 
-namespace CaptureTheFlagAI.Impl
+namespace CaptureTheFlagAI.Impl.Animation
 {
-
     public class AnimatorController : MonoBehaviour
     {
         public readonly int VelocityForwardHash = Animator.StringToHash("VelocityForward");
@@ -12,21 +12,17 @@ namespace CaptureTheFlagAI.Impl
         [SerializeField]
         private Animator animator;
 
-        private SoldierWrapper soldier;
+        private Moveable moveable;
 
-        // Use this for initialization
         void Start()
         {
             UnityEngine.Assertions.Assert.IsNotNull(animator, "The animator field is'n set for AnimatorController of gameobject " + gameObject.name);
-
-            soldier = GetComponent<SoldierWrapper>();
-            UnityEngine.Assertions.Assert.IsNotNull(soldier, "No SoldierWrapper component is attached to gameobject " + gameObject.name);
+            moveable = GetComponent<SoldierBase>().GetMoveable();
         }
 
-        // Update is called once per frame
         void Update()
         {
-            Vector3 velocity = transform.InverseTransformDirection(soldier.GetMoveable().GetMoveVector());
+            Vector3 velocity = transform.InverseTransformDirection(moveable.GetMoveVector());
             animator.SetFloat(VelocityForwardHash, velocity.z);
             animator.SetFloat(VelocitySidewardHash, velocity.x);
         }
