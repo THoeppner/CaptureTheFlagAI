@@ -9,8 +9,8 @@ public class InGameTests : MonoBehaviour
     public float speed = 1;
     public float targetReachedDistance = 0.1f;
     public Transform target;
-    public SoldierWrapper sniper;
-    public SoldierWrapper infantry;
+    public SoldierAIBase sniper;
+    public SoldierAIBase infantry;
 
     Vector3 sniperTarget;
     Vector3 infantryTarget;

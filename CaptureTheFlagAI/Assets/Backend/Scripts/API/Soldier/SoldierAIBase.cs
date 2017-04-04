@@ -5,7 +5,7 @@ using UnityEngine.Assertions;
 
 namespace CaptureTheFlagAI.API.Soldier
 {
-    public class SoldierWrapper : MonoBehaviour
+    public class SoldierAIBase : MonoBehaviour
     {
         private SoldierBase soldier;
 
