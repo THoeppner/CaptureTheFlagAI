@@ -1,4 +1,4 @@
-﻿using CaptureTheFlagAI.API.Soldier;
+﻿using CaptureTheFlagAI.API.Soldier; 
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,6 +7,7 @@ using UnityEngine.Assertions;
 public class InGameTests : MonoBehaviour
 {
     public float speed = 1;
+    public float targetReachedDistance = 0.1f;
     public Transform target;
     public SoldierWrapper sniper;
     public SoldierWrapper infantry;
@@ -38,8 +39,14 @@ public class InGameTests : MonoBehaviour
             infantryTarget.y = 0;
         }
 
-        sniper.GetMoveable().MoveTo(sniperTarget, speed);
-        infantry.GetMoveable().MoveTo(infantryTarget, speed);
+        if ((sniperTarget - sniper.GetMoveable().GetPosition()).magnitude > targetReachedDistance)
+            sniper.GetMoveable().MoveTowards(sniperTarget, speed);
+        else
+            sniper.GetMoveable().Stop();
 
+        if ((infantryTarget - infantry.GetMoveable().GetPosition()).magnitude > targetReachedDistance)
+            infantry.GetMoveable().MoveTowards(infantryTarget, speed);
+        else
+            infantry.GetMoveable().Stop();
     }
 }

@@ -17,7 +17,7 @@ namespace CaptureTheFlagAI.Impl.Soldier
         void Awake()
         {
             moveable = GetComponent<MoveableBase>() as Moveable;
-            Assert.IsNotNull(moveable, "No MoveableImpl component is attached to gameobject " + gameObject.name);
+            Assert.IsNotNull(moveable, "No Moveable component is attached to gameobject " + gameObject.name);
 
             AwakeInternal();
         }

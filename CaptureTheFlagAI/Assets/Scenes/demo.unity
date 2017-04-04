@@ -412,6 +412,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 1
+  targetReachedDistance: 0.1
   target: {fileID: 1783780829}
   sniper: {fileID: 1544683269}
   infantry: {fileID: 2035465975}
@@ -613,6 +614,11 @@ Prefab:
     - target: {fileID: 4459240300066966, guid: 6e6b10d685ef072419d12f8acdbd3574, type: 2}
       propertyPath: m_RootOrder
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114211060195808868, guid: 6e6b10d685ef072419d12f8acdbd3574,
+        type: 2}
+      propertyPath: maxMoveSpeed
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6e6b10d685ef072419d12f8acdbd3574, type: 2}
@@ -1033,7 +1039,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 60
+  field of view: 29
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -1057,8 +1063,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1802953112}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -10}
+  m_LocalRotation: {x: 0.22952372, y: -0.38548604, z: 0.09962119, w: 0.88814133}
+  m_LocalPosition: {x: 37.11194, y: 30.206585, z: -34.689922}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
