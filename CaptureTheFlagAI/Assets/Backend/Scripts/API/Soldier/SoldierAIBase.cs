@@ -5,20 +5,31 @@ using UnityEngine.Assertions;
 
 namespace CaptureTheFlagAI.API.Soldier
 {
+    /// <summary>
+    /// The base class for all soldier bots
+    /// </summary>
     public class SoldierAIBase : MonoBehaviour
     {
         private SoldierBase soldier;
-
-        // Use this for initialization
-        void Awake()
-        {
-            soldier = GetComponent<SoldierBase>();
-            Assert.IsNotNull(soldier, "No SoldierBase component is attached to gameobject " + gameObject.name);
-        }
 
         public Moveable Moveable
         {
             get { return soldier.GetMoveable(); }
         }
+
+        #region MonoBehaviour
+
+        void Awake()
+        {
+            soldier = GetComponent<SoldierBase>();
+            Assert.IsNotNull(soldier, "No SoldierBase component is attached to gameobject " + gameObject.name);
+            soldier.Initialize();
+
+            AwakeInternal();
+        }
+
+        protected virtual void AwakeInternal() { }
+
+        #endregion
     }
 }

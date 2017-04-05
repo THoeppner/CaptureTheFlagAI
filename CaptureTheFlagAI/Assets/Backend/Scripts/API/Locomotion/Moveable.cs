@@ -9,6 +9,16 @@ namespace CaptureTheFlagAI.API.Locomotion
     public interface Moveable 
     {
         /// <summary>
+        /// Max movement speed of the moveable
+        /// </summary>
+        float MaxMoveSpeed { get; }
+
+        /// <summary>
+        /// Max rotational speed of the moveable
+        /// </summary>
+        float MaxRotationalSpeed { get; }
+
+        /// <summary>
         /// Returns the current position of the object
         /// </summary>
         /// <returns></returns>
@@ -19,6 +29,8 @@ namespace CaptureTheFlagAI.API.Locomotion
         /// </summary>
         /// <returns></returns>
         Vector3 GetMoveVector();
+
+        Vector3 GetRotation();
 
         /// <summary>
         /// Moves the object towards the destination. 
@@ -33,6 +45,12 @@ namespace CaptureTheFlagAI.API.Locomotion
         /// <param name="direction"></param>
         /// <param name="speed">How fast the object shall move. 1 means max speed</param>
         void MoveDirection(Vector3 direction, float speed);
+
+        /// <summary>
+        /// Rotates the object toward the given position
+        /// </summary>
+        /// <param name="position"></param>
+        void LookAt(Vector3 position);
 
         /// <summary>
         /// Stops the movement

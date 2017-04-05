@@ -1,4 +1,5 @@
-﻿using CaptureTheFlagAI.API.Soldier; 
+﻿using CaptureTheFlagAI.API.Soldier;
+using CaptureTheFlagAI.Samples;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -48,5 +49,11 @@ public class InGameTests : MonoBehaviour
             infantry.Moveable.MoveTowards(infantryTarget, speed);
         else
             infantry.Moveable.Stop();
+
+        //if (Input.GetKeyDown(KeyCode.R))
+        {
+            sniper.Moveable.LookAt(target.position);
+            infantry.Moveable.LookAt(target.position);
+        }
     }
 }

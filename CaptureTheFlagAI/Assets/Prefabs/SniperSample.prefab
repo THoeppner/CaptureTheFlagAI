@@ -355,9 +355,9 @@ GameObject:
   - component: {fileID: 136555068796291842}
   - component: {fileID: 54867446419105608}
   - component: {fileID: 114817613042471022}
-  - component: {fileID: 114820474368366522}
+  - component: {fileID: 114097883209529862}
   m_Layer: 0
-  m_Name: SoldierSniper
+  m_Name: SniperSample
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -932,6 +932,17 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114097883209529862
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1887864909056334}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0fa2e9c4a13aa14986c5fd248892907, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114403486503327328
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -957,17 +968,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxMoveSpeed: 3
   maxRotationalSpeed: 240
---- !u!114 &114820474368366522
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1887864909056334}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b270423dbf9a36f48aa7dbd10ab15c68, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!136 &136555068796291842
 CapsuleCollider:
   m_ObjectHideFlags: 1
