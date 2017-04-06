@@ -1,4 +1,5 @@
 ﻿using CaptureTheFlagAI.API.Locomotion;
+using CaptureTheFlagAI.API.Weapons;
 using CaptureTheFlagAI.Impl.Soldier;
 using UnityEngine;
 using UnityEngine.Assertions;
@@ -15,6 +16,11 @@ namespace CaptureTheFlagAI.API.Soldier
         public Moveable Moveable
         {
             get { return soldier.GetMoveable(); }
+        }
+
+        public Weapon CurrentWeapon
+        {
+            get { return soldier.GetWeapon(); }
         }
 
         #region MonoBehaviour

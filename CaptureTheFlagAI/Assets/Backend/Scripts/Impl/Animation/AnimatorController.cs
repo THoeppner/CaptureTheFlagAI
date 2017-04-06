@@ -8,11 +8,19 @@ namespace CaptureTheFlagAI.Impl.Animation
     {
         public readonly int VelocityForwardHash = Animator.StringToHash("VelocityForward");
         public readonly int VelocitySidewardHash = Animator.StringToHash("VelocitySideward");
+        public readonly int ShootHash = Animator.StringToHash("Shoot");
 
         [SerializeField]
         private Animator animator;
 
         private Moveable moveable;
+
+        public void Shoot()
+        {
+            animator.SetTrigger(ShootHash);
+        }
+
+        #region MonoBehaviour
 
         void Start()
         {
@@ -26,5 +34,8 @@ namespace CaptureTheFlagAI.Impl.Animation
             animator.SetFloat(VelocityForwardHash, velocity.z);
             animator.SetFloat(VelocitySidewardHash, velocity.x);
         }
+
+        #endregion
+
     }
 }

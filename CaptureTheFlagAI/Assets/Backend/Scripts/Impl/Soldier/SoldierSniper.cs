@@ -1,13 +1,19 @@
 ﻿using CaptureTheFlagAI.API.Soldier;
+using CaptureTheFlagAI.Impl.Weapons;
 
 namespace CaptureTheFlagAI.Impl.Soldier
 {
     public class SoldierSniper : SoldierBase 
     {
-        public override void Initialize()
+        protected override void InitializeInternal()
         {
-            base.Initialize();
             soldierType = SoldierTypes.Sniper;
         }
+
+        protected override void CreateWeapon()
+        {
+            weapon = new SniperRifle(this, weaponSettings);
+        }
+
     }
 }

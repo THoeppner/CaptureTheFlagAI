@@ -5,9 +5,8 @@ namespace CaptureTheFlagAI.Impl.Soldier
 
     public class SoldierInfantry : SoldierBase
     {
-        public override void Initialize()
+        protected override void InitializeInternal()
         {
-            base.Initialize();
             soldierType = SoldierTypes.Infantry;
         }
 

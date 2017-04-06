@@ -50,10 +50,13 @@ public class InGameTests : MonoBehaviour
         else
             infantry.Moveable.Stop();
 
-        //if (Input.GetKeyDown(KeyCode.R))
+        sniper.Moveable.LookAt(target.position);
+        infantry.Moveable.LookAt(target.position);
+
+        if (Input.GetKeyDown(KeyCode.A))
         {
-            sniper.Moveable.LookAt(target.position);
-            infantry.Moveable.LookAt(target.position);
+            sniper.CurrentWeapon.Shoot();
+            infantry.CurrentWeapon.Shoot();
         }
     }
 }
