@@ -22,17 +22,25 @@ namespace CaptureTheFlagAI.Impl.Soldier
         [SerializeField]
         protected WeaponSettings weaponSettings;
 
+        [SerializeField]
+        protected SoldierSettings soldierSettings;
+
         protected Moveable moveable;
         public Moveable GetMoveable() { return moveable; }
 
         protected Weapon weapon;
         public Weapon GetWeapon() { return weapon; }
 
+        protected Statistics statistics;
+        public Statistics GetStatistics() { return soldierSettings; }
+
         protected SoldierTypes soldierType;
 
         public void Initialize()
         {
             Assert.IsNotNull(weaponSettings, "The WeaponSettings field isn't set for soldier " + gameObject.name);
+            Assert.IsNotNull(soldierSettings, "The SoldierSettings field isn't set for soldier " + gameObject.name);
+
             InitializeInternal();
             CreateMoveable();
             CreateWeapon();

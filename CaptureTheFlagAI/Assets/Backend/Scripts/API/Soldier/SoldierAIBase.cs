@@ -23,6 +23,11 @@ namespace CaptureTheFlagAI.API.Soldier
             get { return soldier.GetWeapon(); }
         }
 
+        public Statistics Statistics
+        {
+            get { return soldier.GetStatistics(); }
+        }
+
         #region MonoBehaviour
 
         void Awake()
