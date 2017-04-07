@@ -7,9 +7,20 @@ namespace CaptureTheFlagAI.Impl.Soldier
     public class SoldierSettings : MonoBehaviour, Statistics
     {
         [SerializeField]
-        protected int health;
+        private int maxHealth;
 
-        public int Health { get { return health; } }
+        private int currentHealth;
+
+        public int Health
+        {
+            get { return currentHealth; }
+            set { currentHealth = Mathf.Clamp(value, 0, maxHealth); }
+        }
+
+        void Awake()
+        {
+            currentHealth = maxHealth;
+        }
 
     }
 }

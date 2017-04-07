@@ -1,14 +1,17 @@
-﻿using CaptureTheFlagAI.API.Locomotion;
+﻿using System;
+using CaptureTheFlagAI.API.Interaction;
+using CaptureTheFlagAI.API.Locomotion;
 using CaptureTheFlagAI.API.Soldier;
 using CaptureTheFlagAI.API.Weapons;
 using CaptureTheFlagAI.Impl.Locomotion;
 using CaptureTheFlagAI.Impl.Weapons;
 using UnityEngine;
 using UnityEngine.Assertions;
+using CaptureTheFlagAI.Impl.Animation;
 
 namespace CaptureTheFlagAI.Impl.Soldier
 {
-    public abstract class SoldierBase : MonoBehaviour
+    public abstract class SoldierBase : MonoBehaviour, Hitable
     {
         /// <summary>
         /// Max move speed of the soldier
@@ -31,15 +34,19 @@ namespace CaptureTheFlagAI.Impl.Soldier
         protected Weapon weapon;
         public Weapon GetWeapon() { return weapon; }
 
-        protected Statistics statistics;
         public Statistics GetStatistics() { return soldierSettings; }
 
         protected SoldierTypes soldierType;
+
+        private AnimatorController animatorController;
 
         public void Initialize()
         {
             Assert.IsNotNull(weaponSettings, "The WeaponSettings field isn't set for soldier " + gameObject.name);
             Assert.IsNotNull(soldierSettings, "The SoldierSettings field isn't set for soldier " + gameObject.name);
+
+            animatorController = GetComponent<AnimatorController>();
+            Assert.IsNotNull(animatorController, "No AnimatorController is attached to game object " + gameObject.name);
 
             InitializeInternal();
             CreateMoveable();
@@ -57,5 +64,15 @@ namespace CaptureTheFlagAI.Impl.Soldier
         {
             weapon = new AssaultRifle(this, weaponSettings);
         }
+
+        #region Hitable
+
+        public void Hit(int damage)
+        {
+            animatorController.Hit();
+            soldierSettings.Health -= damage;
+        }
+
+        #endregion
     }
 }
