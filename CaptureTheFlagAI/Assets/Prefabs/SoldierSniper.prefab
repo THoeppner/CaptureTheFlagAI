@@ -1015,7 +1015,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coolDownTime: 1
-  bullet: {fileID: 1714256619753882, guid: 2fc6c3d3aabfea24380db3913916b213, type: 2}
+  bullet: {fileID: 1592714807784176, guid: 2fc6c3d3aabfea24380db3913916b213, type: 2}
   muzzle: {fileID: 4851182370067234}
 --- !u!114 &114817613042471022
 MonoBehaviour:

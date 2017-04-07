@@ -1,5 +1,6 @@
 ﻿using CaptureTheFlagAI.API.Weapons;
 using CaptureTheFlagAI.Impl.Animation;
+using CaptureTheFlagAI.Impl.Pool;
 using CaptureTheFlagAI.Impl.Soldier;
 using UnityEngine;
 using UnityEngine.Assertions;
@@ -29,7 +30,7 @@ namespace CaptureTheFlagAI.Impl.Weapons
 
             lastShootTime = Time.time;
             animatorController.Shoot();
-            GameObject.Instantiate(settings.Bullet, settings.Muzzle.position, settings.Muzzle.rotation);
+            PoolManager.Instance.Get(settings.Bullet, settings.Muzzle.position, settings.Muzzle.rotation);
         }
 
         protected bool CanShoot()
