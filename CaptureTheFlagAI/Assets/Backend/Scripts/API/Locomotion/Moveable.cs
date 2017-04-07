@@ -9,16 +9,6 @@ namespace CaptureTheFlagAI.API.Locomotion
     public interface Moveable 
     {
         /// <summary>
-        /// Max movement speed of the moveable
-        /// </summary>
-        float MaxMoveSpeed { get; }
-
-        /// <summary>
-        /// Max rotational speed of the moveable
-        /// </summary>
-        float MaxRotationalSpeed { get; }
-
-        /// <summary>
         /// Returns the current position of the object
         /// </summary>
         /// <returns></returns>

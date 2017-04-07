@@ -29,10 +29,6 @@ namespace CaptureTheFlagAI.Impl.Locomotion
 
         #region Moveable
 
-        public float MaxMoveSpeed { get { return maxMoveSpeed; } }
-
-        public float MaxRotationalSpeed { get { return maxRotationalSpeed; } }
-
         public Vector3 GetPosition()
         {
             return transform.position;

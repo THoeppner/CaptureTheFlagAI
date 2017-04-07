@@ -1032,6 +1032,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 543975533ff9e234292a34a3da0f5ae4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxMoveSpeed: 3
+  maxRotationalSpeed: 240
   maxHealth: 100
 --- !u!114 &114403486503327328
 MonoBehaviour:
@@ -1070,8 +1072,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db5e86280949dda418960c41b69a6618, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxMoveSpeed: 3
-  maxRotationalSpeed: 240
   weaponSettings: {fileID: 114540823879900434}
   soldierSettings: {fileID: 114350387725912096}
 --- !u!114 &114820474368366522

@@ -7,20 +7,39 @@ namespace CaptureTheFlagAI.Impl.Soldier
     public class SoldierSettings : MonoBehaviour, Statistics
     {
         [SerializeField]
+        private float maxMoveSpeed;
+
+        [SerializeField]
+        private float maxRotationalSpeed;
+
+        [SerializeField]
         private int maxHealth;
 
-        private int currentHealth;
+        private int health;
+
+        #region Statistics
+
+        public float MaxMoveSpeed { get { return maxMoveSpeed; } }
+
+        public float MaxRotationalSpeed { get { return maxRotationalSpeed; } }
+
+        public int MaxHealth { get { return maxHealth; } }
 
         public int Health
         {
-            get { return currentHealth; }
-            set { currentHealth = Mathf.Clamp(value, 0, maxHealth); }
+            get { return health; }
+            set { health = Mathf.Clamp(value, 0, maxHealth); }
         }
+
+        #endregion
+
+        #region MonoBehaviour
 
         void Awake()
         {
-            currentHealth = maxHealth;
+            health = maxHealth;
         }
 
+        #endregion
     }
 }

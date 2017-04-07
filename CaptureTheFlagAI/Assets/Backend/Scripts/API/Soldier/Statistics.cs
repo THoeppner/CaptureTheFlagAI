@@ -2,8 +2,26 @@
 
 namespace CaptureTheFlagAI.API.Soldier
 {
+    /// <summary>
+    /// Provides informaton about the soldier
+    /// </summary>
     public interface Statistics 
     {
+        /// <summary>
+        /// Max movement speed 
+        /// </summary>
+        float MaxMoveSpeed { get; }
+
+        /// <summary>
+        /// Max rotational speed 
+        /// </summary>
+        float MaxRotationalSpeed { get; }
+
+        /// <summary>
+        /// The max health
+        /// </summary>
+        int MaxHealth { get; }
+
         /// <summary>
         /// The current health
         /// </summary>

@@ -395,7 +395,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1930644090159978
 GameObject:
   m_ObjectHideFlags: 1
@@ -1054,8 +1054,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db5e86280949dda418960c41b69a6618, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxMoveSpeed: 3
-  maxRotationalSpeed: 240
   weaponSettings: {fileID: 114521023986307712}
   soldierSettings: {fileID: 114973641854613384}
 --- !u!114 &114973641854613384
@@ -1069,6 +1067,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 543975533ff9e234292a34a3da0f5ae4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxMoveSpeed: 3
+  maxRotationalSpeed: 240
   maxHealth: 100
 --- !u!136 &136555068796291842
 CapsuleCollider:

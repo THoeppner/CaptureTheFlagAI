@@ -13,15 +13,6 @@ namespace CaptureTheFlagAI.Impl.Soldier
 {
     public abstract class SoldierBase : MonoBehaviour, Hitable
     {
-        /// <summary>
-        /// Max move speed of the soldier
-        /// </summary>
-        [SerializeField]
-        protected float maxMoveSpeed;
-
-        [SerializeField]
-        protected float maxRotationalSpeed;
-
         [SerializeField]
         protected WeaponSettings weaponSettings;
 
@@ -57,7 +48,7 @@ namespace CaptureTheFlagAI.Impl.Soldier
 
         protected virtual void CreateMoveable()
         {
-            moveable = new MoveableBase(gameObject, maxMoveSpeed, maxRotationalSpeed);
+            moveable = new MoveableBase(gameObject, soldierSettings.MaxMoveSpeed, soldierSettings.MaxRotationalSpeed);
         }
 
         protected virtual void CreateWeapon()
