@@ -7,9 +7,6 @@ namespace CaptureTheFlagAI.Impl.Pool
 
     public class PoolManager : MonoBehaviour
     {
-        public static PoolManager Instance;
-
-
         public GameObject Get(GameObject original, Vector3 position, Quaternion rotation)
         {
             return Instantiate(original, position, rotation);
@@ -22,10 +19,8 @@ namespace CaptureTheFlagAI.Impl.Pool
 
         #region MonoBehaviour
 
-        // Use this for initialization
         void Awake()
         {
-            Instance = this;
         }
 
         #endregion

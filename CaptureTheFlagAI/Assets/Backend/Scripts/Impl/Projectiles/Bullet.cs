@@ -1,4 +1,5 @@
 ﻿using CaptureTheFlagAI.API.Interaction;
+using CaptureTheFlagAI.Impl.Game;
 using CaptureTheFlagAI.Impl.Pool;
 using UnityEngine;
 using UnityEngine.Assertions;
@@ -39,7 +40,7 @@ namespace CaptureTheFlagAI.Impl.Projectiles
             if (hitable != null)
                 hitable.Hit(damage);
 
-            PoolManager.Instance.Put(gameObject);
+            GameManager.Instance.PoolManager.Put(gameObject);
         }
     }
 }

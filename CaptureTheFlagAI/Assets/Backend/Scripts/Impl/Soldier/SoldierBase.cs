@@ -42,6 +42,8 @@ namespace CaptureTheFlagAI.Impl.Soldier
             InitializeInternal();
             CreateMoveable();
             CreateWeapon();
+
+            Game.GameManager.Instance.TeamManager.AddSoldierToTeamA(this);
         }
 
         protected abstract void InitializeInternal();

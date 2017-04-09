@@ -26,5 +26,10 @@ namespace CaptureTheFlagAI.API.Soldier
         /// The current health
         /// </summary>
         int Health { get; }
+
+        /// <summary>
+        /// Returns true if the soldier is dead
+        /// </summary>
+        bool IsDead { get; }
     }
 }

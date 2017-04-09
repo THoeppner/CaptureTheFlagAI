@@ -31,6 +31,8 @@ namespace CaptureTheFlagAI.Impl.Soldier
             set { health = Mathf.Clamp(value, 0, maxHealth); }
         }
 
+        public bool IsDead { get { return Health <= 0; } }
+
         #endregion
 
         #region MonoBehaviour
