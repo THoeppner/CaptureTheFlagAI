@@ -2,7 +2,7 @@
 namespace CaptureTheFlagAI.API.Teams
 {
 
-    public interface TeamManager 
+    public interface Team
     {
         
     }

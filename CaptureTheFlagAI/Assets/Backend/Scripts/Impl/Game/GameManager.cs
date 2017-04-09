@@ -17,8 +17,8 @@ namespace CaptureTheFlagAI.Impl.Game
         public PoolManager PoolManager { get { return poolManager; } }
 
         [SerializeField]
-        TeamManagerImpl teamManager;
-        public TeamManagerImpl TeamManager { get { return teamManager; } }
+        TeamManager teamManager;
+        public TeamManager TeamManager { get { return teamManager; } }
 
         [SerializeField]
         UIManager uiManager;

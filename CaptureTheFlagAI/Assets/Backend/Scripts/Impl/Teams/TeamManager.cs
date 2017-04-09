@@ -8,7 +8,7 @@ using UnityEngine;
 namespace CaptureTheFlagAI.Impl.Teams
 {
 
-    public class TeamManagerImpl : MonoBehaviour, TeamManager
+    public class TeamManager : MonoBehaviour
     {
         [SerializeField]
         TeamSettings teamASettings;
