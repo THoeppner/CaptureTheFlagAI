@@ -28,5 +28,10 @@ namespace CaptureTheFlagAI.Impl.Game
         {
             Instance = this;
         }
+
+        void Start()
+        {
+            teamManager.CreateTeams();
+        }
     }
 }

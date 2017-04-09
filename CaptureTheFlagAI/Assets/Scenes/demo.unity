@@ -944,6 +944,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1b95ef8f3555f641880545ba444e1e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  teamASettings:
+    sniperPrefab: {fileID: 1887864909056334, guid: 375befb780ed2f746b33806da9cd211e,
+      type: 2}
+    infantryPrefab: {fileID: 1887864909056334, guid: 375befb780ed2f746b33806da9cd211e,
+      type: 2}
+    gunnerPrefab: {fileID: 0}
+    scoutPrefab: {fileID: 0}
+    spawnPositions:
+    - position: {x: -20, y: 0, z: -20}
+      soldierType: 0
+    - position: {x: -20, y: 0, z: -18}
+      soldierType: 1
+    - position: {x: -20, y: 0, z: -22}
+      soldierType: 2
+  teamBSettings:
+    sniperPrefab: {fileID: 1887864909056334, guid: 375befb780ed2f746b33806da9cd211e,
+      type: 2}
+    infantryPrefab: {fileID: 0}
+    gunnerPrefab: {fileID: 0}
+    scoutPrefab: {fileID: 0}
+    spawnPositions:
+    - position: {x: 20, y: 0, z: 20}
+      soldierType: 0
+    - position: {x: 20, y: 0, z: 18}
+      soldierType: 0
+    - position: {x: 20, y: 0, z: 22}
+      soldierType: 0
 --- !u!1 &676320875
 GameObject:
   m_ObjectHideFlags: 0

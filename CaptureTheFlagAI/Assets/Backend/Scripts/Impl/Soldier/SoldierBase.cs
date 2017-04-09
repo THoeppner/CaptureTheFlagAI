@@ -1,5 +1,4 @@
-﻿using System;
-using CaptureTheFlagAI.API.Interaction;
+﻿using CaptureTheFlagAI.API.Interaction;
 using CaptureTheFlagAI.API.Locomotion;
 using CaptureTheFlagAI.API.Soldier;
 using CaptureTheFlagAI.API.Weapons;
@@ -42,8 +41,6 @@ namespace CaptureTheFlagAI.Impl.Soldier
             InitializeInternal();
             CreateMoveable();
             CreateWeapon();
-
-            Game.GameManager.Instance.TeamManager.AddSoldierToTeamA(this);
         }
 
         protected abstract void InitializeInternal();
