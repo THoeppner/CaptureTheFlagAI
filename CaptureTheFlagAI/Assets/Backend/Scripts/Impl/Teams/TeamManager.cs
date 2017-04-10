@@ -46,8 +46,11 @@ namespace CaptureTheFlagAI.Impl.Teams
                 return null;
 
             GameObject go = Instantiate(prefab, spawnPoint.position, Quaternion.identity);
-            // TODO: teamA or teamB
-            TeamMaterialChanger.ChangeMaterial(spawnPoint.soldierType, false, go);
+            if (teamSettings == teamASettings)
+                TeamMaterialChanger.ChangeMaterialToTeamA(spawnPoint.soldierType, go);
+            else
+                TeamMaterialChanger.ChangeMaterialToTeamB(spawnPoint.soldierType, go);
+
             return go.GetComponent<SoldierBase>();
         }
 
@@ -86,10 +89,10 @@ namespace CaptureTheFlagAI.Impl.Teams
         {
             Color orgColor = Gizmos.color;
 
-            Gizmos.color = Color.red;
+            Gizmos.color = Color.blue;
             teamASettings.spawnPositions.ForEach(s => Gizmos.DrawWireCube(s.position, new Vector3(1, 0.1f, 1)));
 
-            Gizmos.color = Color.blue;
+            Gizmos.color = Color.yellow;
             teamBSettings.spawnPositions.ForEach(s => Gizmos.DrawWireCube(s.position, new Vector3(1, 0.1f, 1)));
 
             Gizmos.color = orgColor;
