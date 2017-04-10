@@ -1,4 +1,5 @@
 ﻿using CaptureTheFlagAI.API.Locomotion;
+using CaptureTheFlagAI.API.Teams;
 using CaptureTheFlagAI.API.Weapons;
 using CaptureTheFlagAI.Impl.Soldier;
 using UnityEngine;
@@ -26,6 +27,16 @@ namespace CaptureTheFlagAI.API.Soldier
         public Statistics Statistics
         {
             get { return soldier.GetStatistics(); }
+        }
+
+        public Team Team
+        {
+            get { return soldier.GetTeam(); }
+        }
+
+        public SoldierTypes SoldierType
+        {
+            get { return soldier.GetSoldierType(); }
         }
 
         #region MonoBehaviour

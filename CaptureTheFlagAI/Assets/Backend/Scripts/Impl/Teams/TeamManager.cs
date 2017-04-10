@@ -1,8 +1,6 @@
 ﻿using CaptureTheFlagAI.API.Soldier;
-using CaptureTheFlagAI.API.Teams;
 using CaptureTheFlagAI.Impl.Game;
 using CaptureTheFlagAI.Impl.Soldier;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace CaptureTheFlagAI.Impl.Teams
@@ -11,13 +9,13 @@ namespace CaptureTheFlagAI.Impl.Teams
     public class TeamManager : MonoBehaviour
     {
         [SerializeField]
-        TeamSettings teamASettings;
+        private TeamSettings teamASettings;
 
         [SerializeField]
-        TeamSettings teamBSettings;
+        private TeamSettings teamBSettings;
 
-        List<SoldierBase> teamA = new List<SoldierBase>();
-        List<SoldierBase> teamB = new List<SoldierBase>();
+        private SoldierAITeam teamA;
+        private SoldierAITeam teamB;
 
         public void CreateTeams()
         {
@@ -47,7 +45,10 @@ namespace CaptureTheFlagAI.Impl.Teams
             if (!prefab)
                 return null;
 
-            return Instantiate(prefab, spawnPoint.position, Quaternion.identity).GetComponent<SoldierBase>();
+            GameObject go = Instantiate(prefab, spawnPoint.position, Quaternion.identity);
+            // TODO: teamA or teamB
+            TeamMaterialChanger.ChangeMaterial(spawnPoint.soldierType, false, go);
+            return go.GetComponent<SoldierBase>();
         }
 
 
@@ -56,7 +57,8 @@ namespace CaptureTheFlagAI.Impl.Teams
             if (!soldier)
                 return;
 
-            teamA.Add(soldier);
+            teamA.AddSoldier(soldier.GetComponent<SoldierAIBase>());
+            soldier.SetTeam(teamA);
             GameManager.Instance.UIManager.AddSoldierToTeamA(soldier);
         }
 
@@ -65,7 +67,8 @@ namespace CaptureTheFlagAI.Impl.Teams
             if (!soldier)
                 return;
 
-            teamB.Add(soldier);
+            teamB.AddSoldier(soldier.GetComponent<SoldierAIBase>());
+            soldier.SetTeam(teamB);
             GameManager.Instance.UIManager.AddSoldierToTeamB(soldier);
         }
 
@@ -73,6 +76,10 @@ namespace CaptureTheFlagAI.Impl.Teams
 
         void Awake()
         {
+            teamA = new SoldierAITeam();
+            teamA.Name = "Team A";
+            teamB = new SoldierAITeam();
+            teamB.Name = "Team B";
         }
 
         void OnDrawGizmos()

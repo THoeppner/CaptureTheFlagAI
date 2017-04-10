@@ -7,6 +7,7 @@ using CaptureTheFlagAI.Impl.Weapons;
 using UnityEngine;
 using UnityEngine.Assertions;
 using CaptureTheFlagAI.Impl.Animation;
+using CaptureTheFlagAI.API.Teams;
 
 namespace CaptureTheFlagAI.Impl.Soldier
 {
@@ -24,9 +25,14 @@ namespace CaptureTheFlagAI.Impl.Soldier
         protected Weapon weapon;
         public Weapon GetWeapon() { return weapon; }
 
+        protected Team team;
+        public Team GetTeam() { return team; }
+        public void SetTeam(Team team) { this.team = team; }
+
         public Statistics GetStatistics() { return soldierSettings; }
 
         protected SoldierTypes soldierType;
+        public SoldierTypes GetSoldierType() { return soldierType; }
 
         private AnimatorController animatorController;
 
@@ -39,6 +45,7 @@ namespace CaptureTheFlagAI.Impl.Soldier
             Assert.IsNotNull(animatorController, "No AnimatorController is attached to game object " + gameObject.name);
 
             InitializeInternal();
+
             CreateMoveable();
             CreateWeapon();
         }
