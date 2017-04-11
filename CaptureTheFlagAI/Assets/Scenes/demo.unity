@@ -701,7 +701,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4459240300066966, guid: 6e6b10d685ef072419d12f8acdbd3574, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -3.203
+      value: -4.6
       objectReference: {fileID: 0}
     - target: {fileID: 4459240300066966, guid: 6e6b10d685ef072419d12f8acdbd3574, type: 2}
       propertyPath: m_LocalPosition.y
@@ -789,7 +789,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4694231885693644, guid: f14a4395300e1494785db94617930e3d, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 0.027
+      value: -1.37
       objectReference: {fileID: 0}
     - target: {fileID: 4694231885693644, guid: f14a4395300e1494785db94617930e3d, type: 2}
       propertyPath: m_LocalPosition.y
@@ -945,10 +945,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   teamASettings:
-    sniperPrefab: {fileID: 1887864909056334, guid: 375befb780ed2f746b33806da9cd211e,
-      type: 2}
-    infantryPrefab: {fileID: 1887864909056334, guid: 375befb780ed2f746b33806da9cd211e,
-      type: 2}
+    sniperPrefab: {fileID: 0}
+    infantryPrefab: {fileID: 0}
     gunnerPrefab: {fileID: 0}
     scoutPrefab: {fileID: 0}
     spawnPositions:
@@ -959,8 +957,7 @@ MonoBehaviour:
     - position: {x: -20, y: 0, z: -22}
       soldierType: 2
   teamBSettings:
-    sniperPrefab: {fileID: 1887864909056334, guid: 375befb780ed2f746b33806da9cd211e,
-      type: 2}
+    sniperPrefab: {fileID: 0}
     infantryPrefab: {fileID: 0}
     gunnerPrefab: {fileID: 0}
     scoutPrefab: {fileID: 0}
@@ -1293,7 +1290,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1783780825}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 11.33, y: 2, z: 6.9}
+  m_LocalPosition: {x: -9.48, y: 2, z: -2.91}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children: []
   m_Father: {fileID: 0}

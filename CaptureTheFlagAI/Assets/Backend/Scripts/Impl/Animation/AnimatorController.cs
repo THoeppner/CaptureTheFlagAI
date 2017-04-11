@@ -12,12 +12,15 @@ namespace CaptureTheFlagAI.Impl.Animation
         public readonly int ShootHash = Animator.StringToHash("Shoot");
         public readonly int HitHash = Animator.StringToHash("Hit");
         public readonly int HealthHash = Animator.StringToHash("Health");
+        public readonly string CrouchingLayerName = "Crouching";
 
         [SerializeField]
         private Animator animator;
 
         private Moveable moveable;
         private Statistics statistics;
+
+        private int crouchingLayerIdx;
 
         public void Shoot()
         {
@@ -29,6 +32,16 @@ namespace CaptureTheFlagAI.Impl.Animation
             animator.SetTrigger(HitHash);
         }
 
+        public void Crouch()
+        {
+            animator.SetLayerWeight(crouchingLayerIdx, 1);
+        }
+
+        public void StopCrouch()
+        {
+            animator.SetLayerWeight(crouchingLayerIdx, 0);
+        }
+
         #region MonoBehaviour
 
         void Start()
@@ -38,6 +51,8 @@ namespace CaptureTheFlagAI.Impl.Animation
             SoldierBase soldier = GetComponent<SoldierBase>();
             moveable = soldier.GetMoveable();
             statistics = soldier.GetStatistics();
+
+            crouchingLayerIdx = animator.GetLayerIndex(CrouchingLayerName);
         }
 
         void Update()

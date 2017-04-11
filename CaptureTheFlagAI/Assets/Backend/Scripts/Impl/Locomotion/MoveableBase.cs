@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using CaptureTheFlagAI.API.Locomotion;
+using CaptureTheFlagAI.Impl.Animation;
 
 namespace CaptureTheFlagAI.Impl.Locomotion
 {
@@ -12,6 +13,10 @@ namespace CaptureTheFlagAI.Impl.Locomotion
 
         protected Vector3 moveVector;
 
+        protected bool isCrouching;
+
+        protected AnimatorController animatorController;
+
         #region Constructor
 
         public MoveableBase(GameObject gameObject, float maxMoveSpeed, float maxRotationalSpeed)
@@ -23,6 +28,8 @@ namespace CaptureTheFlagAI.Impl.Locomotion
 
             rigidbody = gameObject.GetComponent<Rigidbody>();
             UnityEngine.Assertions.Assert.IsNotNull(rigidbody, "No Rigidbody component is attached to gameobject " + gameObject.name);
+            animatorController = gameObject.GetComponent<AnimatorController>();
+            UnityEngine.Assertions.Assert.IsNotNull(animatorController, "No AnimatorController component is attached to gameobject " + gameObject.name);
         }
 
         #endregion
@@ -60,13 +67,31 @@ namespace CaptureTheFlagAI.Impl.Locomotion
         {
             speed = Mathf.Clamp01(speed);
             moveVector = Vector3.Normalize(direction) * speed;
-            rigidbody.velocity = moveVector * maxMoveSpeed;
+            rigidbody.velocity = moveVector * maxMoveSpeed * (IsCrouching ? 0.5f : 1);
         }
 
         public void Stop()
         {
             MoveDirection(Vector3.forward, 0);
         }
+
+        public bool IsCrouching
+        {
+            get { return isCrouching; }
+            set
+            {
+                if (isCrouching == value)
+                    return;
+
+                isCrouching = value;
+
+                if (isCrouching)
+                    animatorController.Crouch();
+                else
+                    animatorController.StopCrouch();
+            }
+        }
+
 
         #endregion
     }

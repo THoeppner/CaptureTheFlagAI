@@ -46,5 +46,10 @@ namespace CaptureTheFlagAI.API.Locomotion
         /// Stops the movement
         /// </summary>
         void Stop();
+
+        /// <summary>
+        /// Lets the soldier crouch or stand up
+        /// </summary>
+        bool IsCrouching { get; set; }
     }
 }

@@ -58,5 +58,11 @@ public class InGameTests : MonoBehaviour
             sniper.CurrentWeapon.Shoot();
             infantry.CurrentWeapon.Shoot();
         }
+
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            sniper.Moveable.IsCrouching = !sniper.Moveable.IsCrouching;
+            infantry.Moveable.IsCrouching = !infantry.Moveable.IsCrouching;
+        }
     }
 }
