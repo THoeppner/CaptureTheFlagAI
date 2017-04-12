@@ -62,12 +62,23 @@ namespace CaptureTheFlagAI.Impl.Soldier
             weapon = new AssaultRifle(this, weaponSettings);
         }
 
+        protected void Die()
+        {
+            moveable.DisablePermanently();
+            weapon.DisablePermanently();
+            GetComponent<Collider>().enabled = false;
+            GetComponent<Rigidbody>().isKinematic = true;
+        }
+
         #region Hitable
 
         public void Hit(int damage)
         {
             animatorController.Hit();
             soldierSettings.Health -= damage;
+
+            if (soldierSettings.IsDead)
+                Die();
         }
 
         #endregion

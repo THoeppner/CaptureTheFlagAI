@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using CaptureTheFlagAI.API.Locomotion;
 using CaptureTheFlagAI.Impl.Animation;
+using System.Timers;
+using System;
 
 namespace CaptureTheFlagAI.Impl.Locomotion
 {
@@ -14,6 +16,9 @@ namespace CaptureTheFlagAI.Impl.Locomotion
         protected Vector3 moveVector;
 
         protected bool isCrouching;
+
+        protected bool isDisabledLimited;
+        protected bool isDisabledPermanently;
 
         protected AnimatorController animatorController;
 
@@ -53,6 +58,9 @@ namespace CaptureTheFlagAI.Impl.Locomotion
 
         public void LookAt(Vector3 position)
         {
+            if (IsDisabled)
+                return;
+
             position.y = transform.position.y;
             Quaternion lookRotation = Quaternion.LookRotation(position - transform.position);
             transform.rotation = Quaternion.RotateTowards(transform.rotation, lookRotation, maxRotationalSpeed * Time.deltaTime);
@@ -65,6 +73,9 @@ namespace CaptureTheFlagAI.Impl.Locomotion
 
         public void MoveDirection(Vector3 direction, float speed)
         {
+            if (IsDisabled)
+                return;
+
             speed = Mathf.Clamp01(speed);
             moveVector = Vector3.Normalize(direction) * speed;
             rigidbody.velocity = moveVector * maxMoveSpeed * (IsCrouching ? 0.5f : 1);
@@ -75,12 +86,40 @@ namespace CaptureTheFlagAI.Impl.Locomotion
             MoveDirection(Vector3.forward, 0);
         }
 
+        public void DisablePermanently()
+        {
+            isDisabledPermanently = true;
+        }
+
+        public void DisableForTimeSpan(float seconds)
+        {
+            if (IsDisabled)
+                return;
+
+            Stop();
+            isDisabledLimited = true;
+            CreateEnableTimer(seconds);
+        }
+
+        private void CreateEnableTimer(float seconds)
+        {
+            Timer enableTimer = new Timer(seconds * 1000);
+            enableTimer.AutoReset = false;
+            enableTimer.Elapsed += OnEnableTimerElapsed;
+            enableTimer.Start();
+        }
+
+        private void OnEnableTimerElapsed(object sender, ElapsedEventArgs e)
+        {
+            isDisabledLimited = false;
+        }
+
         public bool IsCrouching
         {
             get { return isCrouching; }
             set
             {
-                if (isCrouching == value)
+                if (isCrouching == value || IsDisabled)
                     return;
 
                 isCrouching = value;
@@ -92,6 +131,7 @@ namespace CaptureTheFlagAI.Impl.Locomotion
             }
         }
 
+        public bool IsDisabled { get { return isDisabledLimited || isDisabledPermanently; } }
 
         #endregion
     }

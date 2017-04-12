@@ -7,6 +7,10 @@ namespace CaptureTheFlagAI.Impl.Weapons
     public class WeaponSettings : MonoBehaviour
     {
         [SerializeField]
+        private float shotTimeSpan;
+        public float ShotTimeSpan { get { return shotTimeSpan; } }
+
+        [SerializeField]
         private float coolDownTime;
         public float CoolDownTime { get { return coolDownTime; } }
 

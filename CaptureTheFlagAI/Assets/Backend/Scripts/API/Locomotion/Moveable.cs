@@ -51,5 +51,15 @@ namespace CaptureTheFlagAI.API.Locomotion
         /// Lets the soldier crouch or stand up
         /// </summary>
         bool IsCrouching { get; set; }
+
+        /// <summary>
+        /// Disables the moveable for the given time. 
+        /// </summary>
+        void DisableForTimeSpan(float seconds);
+
+        /// <summary>
+        /// Disables the moveable permanently
+        /// </summary>
+        void DisablePermanently();
     }
 }
