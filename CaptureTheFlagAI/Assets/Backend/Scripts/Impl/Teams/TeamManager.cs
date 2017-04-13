@@ -1,11 +1,11 @@
 ﻿using CaptureTheFlagAI.API.Soldier;
+using CaptureTheFlagAI.API.Teams;
 using CaptureTheFlagAI.Impl.Game;
 using CaptureTheFlagAI.Impl.Soldier;
 using UnityEngine;
 
 namespace CaptureTheFlagAI.Impl.Teams
 {
-
     public class TeamManager : MonoBehaviour
     {
         [SerializeField]
@@ -15,7 +15,10 @@ namespace CaptureTheFlagAI.Impl.Teams
         private TeamSettings teamBSettings;
 
         private SoldierAITeam teamA;
+        public Team TeamA { get { return teamA; } }
+
         private SoldierAITeam teamB;
+        public Team TeamB { get { return teamB; } }
 
         public void CreateTeams()
         {
