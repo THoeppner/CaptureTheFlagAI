@@ -15,6 +15,12 @@ namespace CaptureTheFlagAI.Impl.Soldier
         [SerializeField]
         private int maxHealth;
 
+        [SerializeField]
+        private float viewAngle;
+
+        [SerializeField]
+        private float viewDistance;
+
         private int health;
 
         #region Statistics
@@ -32,6 +38,10 @@ namespace CaptureTheFlagAI.Impl.Soldier
         }
 
         public bool IsDead { get { return Health <= 0; } }
+
+        public float ViewAngle { get { return viewAngle; } }
+
+        public float ViewDistance { get { return viewDistance; } }
 
         #endregion
 

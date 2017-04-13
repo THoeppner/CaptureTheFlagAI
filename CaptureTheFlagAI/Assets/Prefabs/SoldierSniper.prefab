@@ -1035,6 +1035,8 @@ MonoBehaviour:
   maxMoveSpeed: 3
   maxRotationalSpeed: 240
   maxHealth: 100
+  viewAngle: 60
+  viewDistance: 15
 --- !u!114 &114403486503327328
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1075,6 +1077,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponSettings: {fileID: 114540823879900434}
   soldierSettings: {fileID: 114350387725912096}
+  debugDrawVisualSense: 1
 --- !u!114 &114820474368366522
 MonoBehaviour:
   m_ObjectHideFlags: 1

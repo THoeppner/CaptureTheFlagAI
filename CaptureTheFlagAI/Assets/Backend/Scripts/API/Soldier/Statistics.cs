@@ -31,5 +31,15 @@ namespace CaptureTheFlagAI.API.Soldier
         /// Returns true if the soldier is dead
         /// </summary>
         bool IsDead { get; }
+
+        /// <summary>
+        /// Angle of the view
+        /// </summary>
+        float ViewAngle { get; }
+
+        /// <summary>
+        /// How far the soldier can see
+        /// </summary>
+        float ViewDistance { get; }
     }
 }

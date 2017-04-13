@@ -8,6 +8,9 @@ using UnityEngine;
 using UnityEngine.Assertions;
 using CaptureTheFlagAI.Impl.Animation;
 using CaptureTheFlagAI.API.Teams;
+using CaptureTheFlagAI.API.Senses;
+using CaptureTheFlagAI.Impl.Senses;
+using UnityEditor;
 
 namespace CaptureTheFlagAI.Impl.Soldier
 {
@@ -19,11 +22,17 @@ namespace CaptureTheFlagAI.Impl.Soldier
         [SerializeField]
         protected SoldierSettings soldierSettings;
 
+        [SerializeField]
+        private bool debugDrawVisualSense;
+
         protected Moveable moveable;
         public Moveable GetMoveable() { return moveable; }
 
         protected Weapon weapon;
         public Weapon GetWeapon() { return weapon; }
+
+        protected VisualSense visualSense;
+        public VisualSense GetVisualSense() { return visualSense; }
 
         protected Team team;
         public Team GetTeam() { return team; }
@@ -48,6 +57,7 @@ namespace CaptureTheFlagAI.Impl.Soldier
 
             CreateMoveable();
             CreateWeapon();
+            CreateSenses();
         }
 
         protected abstract void InitializeInternal();
@@ -60,6 +70,11 @@ namespace CaptureTheFlagAI.Impl.Soldier
         protected virtual void CreateWeapon()
         {
             weapon = new AssaultRifle(this, weaponSettings);
+        }
+
+        protected virtual void CreateSenses()
+        {
+            visualSense = new SimpleVisualSense(this.transform, soldierSettings.ViewAngle, soldierSettings.ViewDistance);
         }
 
         protected void Die()
@@ -79,6 +94,22 @@ namespace CaptureTheFlagAI.Impl.Soldier
 
             if (soldierSettings.IsDead)
                 Die();
+        }
+
+        #endregion
+
+        #region Just for development
+
+        void OnDrawGizmos()
+        {
+            if (debugDrawVisualSense)
+            {
+                Color orgColor = Handles.color;
+                Handles.color = new Color(0, 0, 1, 0.2f);
+                Handles.DrawSolidArc(this.transform.position, this.transform.up, this.transform.forward, soldierSettings.ViewAngle, soldierSettings.ViewDistance);
+                Handles.DrawSolidArc(this.transform.position, this.transform.up, this.transform.forward, -soldierSettings.ViewAngle, soldierSettings.ViewDistance);
+                Handles.color = orgColor;
+            }
         }
 
         #endregion

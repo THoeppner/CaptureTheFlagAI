@@ -1040,6 +1040,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea4cfd6d25c11aa46a431ac3ec4bde2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shotTimeSpan: 0
   coolDownTime: 1
   bullet: {fileID: 0}
   muzzle: {fileID: 0}
@@ -1056,6 +1057,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponSettings: {fileID: 114521023986307712}
   soldierSettings: {fileID: 114973641854613384}
+  debugDrawVisualSense: 1
 --- !u!114 &114973641854613384
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1070,6 +1072,8 @@ MonoBehaviour:
   maxMoveSpeed: 3
   maxRotationalSpeed: 240
   maxHealth: 100
+  viewAngle: 60
+  viewDistance: 15
 --- !u!136 &136555068796291842
 CapsuleCollider:
   m_ObjectHideFlags: 1

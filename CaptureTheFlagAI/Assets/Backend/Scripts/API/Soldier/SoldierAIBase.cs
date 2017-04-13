@@ -1,4 +1,5 @@
 ﻿using CaptureTheFlagAI.API.Locomotion;
+using CaptureTheFlagAI.API.Senses;
 using CaptureTheFlagAI.API.Teams;
 using CaptureTheFlagAI.API.Weapons;
 using CaptureTheFlagAI.Impl.Soldier;
@@ -32,6 +33,11 @@ namespace CaptureTheFlagAI.API.Soldier
         public Team Team
         {
             get { return soldier.GetTeam(); }
+        }
+
+        public VisualSense VisualSense
+        {
+            get { return soldier.GetVisualSense(); }
         }
 
         public SoldierTypes SoldierType
