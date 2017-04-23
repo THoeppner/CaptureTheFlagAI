@@ -13,12 +13,14 @@ namespace CaptureTheFlagAI.Impl.Senses
         protected Transform owner;
         protected float viewAngle;
         protected float viewDistance;
+        protected LayerMask layerMask;
 
-        public SimpleVisualSense(Transform owner, float viewAngle, float viewDistance)
+        public SimpleVisualSense(Transform owner, float viewAngle, float viewDistance, LayerMask layerMask)
         {
             this.owner = owner;
             this.viewAngle = viewAngle;
             this.viewDistance = viewDistance;
+            this.layerMask = layerMask;
         }
 
         
@@ -58,6 +60,18 @@ namespace CaptureTheFlagAI.Impl.Senses
 
             if ((Vector3.Angle(this.owner.forward, toSoldier) > viewAngleHalf) || (toSoldier.sqrMagnitude > viewDistanceSqr))
                 return false;
+
+            Vector3 v1 = owner.position;
+            v1.y = 1;
+
+            RaycastHit hitInfo;
+            if (!Physics.Raycast(v1, toSoldier, out hitInfo, viewDistance, layerMask) ||
+                (hitInfo.transform.gameObject.GetInstanceID() != s.transform.gameObject.GetInstanceID()))
+                return false;
+
+            Vector3 v2 = s.Moveable.GetPosition();
+            v2.y = 1;
+            Debug.DrawLine(v1, v2);
 
             return true;
         }

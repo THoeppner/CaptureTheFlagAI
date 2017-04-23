@@ -65,6 +65,7 @@ namespace CaptureTheFlagAI.Impl.Teams
 
             teamA.AddSoldier(soldier.GetComponent<SoldierAIBase>());
             soldier.SetTeam(teamA);
+            soldier.gameObject.layer = GameManager.Instance.LayerManager.LayerTeamA;
             GameManager.Instance.UIManager.AddSoldierToTeamA(soldier);
         }
 
@@ -75,6 +76,7 @@ namespace CaptureTheFlagAI.Impl.Teams
 
             teamB.AddSoldier(soldier.GetComponent<SoldierAIBase>());
             soldier.SetTeam(teamB);
+            soldier.gameObject.layer = GameManager.Instance.LayerManager.LayerTeamB;
             GameManager.Instance.UIManager.AddSoldierToTeamB(soldier);
         }
 

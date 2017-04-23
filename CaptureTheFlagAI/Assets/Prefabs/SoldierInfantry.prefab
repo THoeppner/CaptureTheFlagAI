@@ -816,7 +816,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1815637603208554}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.37, y: 0, z: -2.745}
+  m_LocalPosition: {x: 0.94, y: 0, z: -3.45}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4278623866205056}
@@ -1035,7 +1035,7 @@ MonoBehaviour:
   maxMoveSpeed: 2.5
   maxRotationalSpeed: 180
   maxHealth: 100
-  viewAngle: 60
+  viewAngle: 120
   viewDistance: 10
 --- !u!114 &114235573654917490
 MonoBehaviour:
@@ -1088,6 +1088,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponSettings: {fileID: 114347920697311430}
   soldierSettings: {fileID: 114138699195137430}
+  layerMaskVisualSense:
+    serializedVersion: 2
+    m_Bits: 3584
   debugDrawVisualSense: 1
 --- !u!136 &136372864900011024
 CapsuleCollider:

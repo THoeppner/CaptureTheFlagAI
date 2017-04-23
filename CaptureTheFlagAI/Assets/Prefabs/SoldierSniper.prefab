@@ -1077,6 +1077,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponSettings: {fileID: 114540823879900434}
   soldierSettings: {fileID: 114350387725912096}
+  layerMaskVisualSense:
+    serializedVersion: 2
+    m_Bits: 3584
   debugDrawVisualSense: 1
 --- !u!114 &114820474368366522
 MonoBehaviour:

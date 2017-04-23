@@ -23,6 +23,9 @@ namespace CaptureTheFlagAI.Impl.Soldier
         protected SoldierSettings soldierSettings;
 
         [SerializeField]
+        private LayerMask layerMaskVisualSense;
+
+        [SerializeField]
         private bool debugDrawVisualSense;
 
         protected Moveable moveable;
@@ -74,7 +77,7 @@ namespace CaptureTheFlagAI.Impl.Soldier
 
         protected virtual void CreateSenses()
         {
-            visualSense = new SimpleVisualSense(this.transform, soldierSettings.ViewAngle, soldierSettings.ViewDistance);
+            visualSense = new SimpleVisualSense(this.transform, soldierSettings.ViewAngle, soldierSettings.ViewDistance, soldierSettings.Head, layerMaskVisualSense);
         }
 
         protected void Die()

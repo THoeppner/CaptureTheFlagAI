@@ -1,8 +1,6 @@
 ﻿using CaptureTheFlagAI.Impl.Pool;
 using CaptureTheFlagAI.Impl.Teams;
 using CaptureTheFlagAI.Impl.UI;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace CaptureTheFlagAI.Impl.Game
@@ -24,6 +22,10 @@ namespace CaptureTheFlagAI.Impl.Game
         UIManager uiManager;
         public UIManager UIManager { get { return uiManager; } }
 
+        [SerializeField]
+        LayerManager layerManager;
+        public LayerManager LayerManager { get { return layerManager; } }
+
         void Awake()
         {
             Instance = this;
@@ -31,6 +33,7 @@ namespace CaptureTheFlagAI.Impl.Game
 
         void Start()
         {
+            layerManager.Initialize();
             teamManager.CreateTeams();
         }
     }

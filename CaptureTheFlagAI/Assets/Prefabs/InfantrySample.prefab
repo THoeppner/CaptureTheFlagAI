@@ -966,8 +966,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36bc1e7fb353184498cb8c7206349f10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxMoveSpeed: 2.5
-  maxRotationalSpeed: 180
+  weaponSettings: {fileID: 0}
+  soldierSettings: {fileID: 0}
+  layerMaskVisualSense:
+    serializedVersion: 2
+    m_Bits: 3584
+  debugDrawVisualSense: 0
 --- !u!136 &136372864900011024
 CapsuleCollider:
   m_ObjectHideFlags: 1

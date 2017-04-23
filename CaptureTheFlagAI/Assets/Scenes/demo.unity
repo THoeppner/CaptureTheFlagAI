@@ -470,6 +470,48 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 191875933}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &268039264
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 268039265}
+  - component: {fileID: 268039266}
+  m_Layer: 0
+  m_Name: LayerManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &268039265
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 268039264}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 599833499}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &268039266
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 268039264}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0628d16a3452b974a928edf2f067f342, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  layerNameTeamA: SoldierTeamA
+  layerNameTeamB: SoldierTeamB
 --- !u!1 &453612794
 GameObject:
   m_ObjectHideFlags: 0
@@ -701,7 +743,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4459240300066966, guid: 6e6b10d685ef072419d12f8acdbd3574, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -4.6
+      value: -15.08
       objectReference: {fileID: 0}
     - target: {fileID: 4459240300066966, guid: 6e6b10d685ef072419d12f8acdbd3574, type: 2}
       propertyPath: m_LocalPosition.y
@@ -709,7 +751,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4459240300066966, guid: 6e6b10d685ef072419d12f8acdbd3574, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -5
+      value: -9.39
       objectReference: {fileID: 0}
     - target: {fileID: 4459240300066966, guid: 6e6b10d685ef072419d12f8acdbd3574, type: 2}
       propertyPath: m_LocalRotation.x
@@ -735,6 +777,16 @@ Prefab:
         type: 2}
       propertyPath: viewAngle
       value: 120
+      objectReference: {fileID: 0}
+    - target: {fileID: 114817613042471022, guid: 6e6b10d685ef072419d12f8acdbd3574,
+        type: 2}
+      propertyPath: debugDrawVisualSense
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114817613042471022, guid: 6e6b10d685ef072419d12f8acdbd3574,
+        type: 2}
+      propertyPath: layerMaskVisualSense.m_Bits
+      value: 3584
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6e6b10d685ef072419d12f8acdbd3574, type: 2}
@@ -768,6 +820,7 @@ Transform:
   - {fileID: 157214099}
   - {fileID: 674490799}
   - {fileID: 153793042}
+  - {fileID: 268039265}
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -785,6 +838,7 @@ MonoBehaviour:
   poolManager: {fileID: 157214100}
   teamManager: {fileID: 674490800}
   uiManager: {fileID: 153793043}
+  layerManager: {fileID: 268039266}
 --- !u!1001 &609205121
 Prefab:
   m_ObjectHideFlags: 0
@@ -823,11 +877,6 @@ Prefab:
     - target: {fileID: 4694231885693644, guid: f14a4395300e1494785db94617930e3d, type: 2}
       propertyPath: m_RootOrder
       value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 114138699195137430, guid: f14a4395300e1494785db94617930e3d,
-        type: 2}
-      propertyPath: viewAngle
-      value: 120
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f14a4395300e1494785db94617930e3d, type: 2}
@@ -1436,10 +1485,9 @@ Prefab:
       propertyPath: m_RootOrder
       value: 7
       objectReference: {fileID: 0}
-    - target: {fileID: 114973641854613384, guid: 375befb780ed2f746b33806da9cd211e,
-        type: 2}
-      propertyPath: viewAngle
-      value: 120
+    - target: {fileID: 1887864909056334, guid: 375befb780ed2f746b33806da9cd211e, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 375befb780ed2f746b33806da9cd211e, type: 2}

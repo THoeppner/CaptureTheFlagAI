@@ -1058,6 +1058,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponSettings: {fileID: 114521023986307712}
   soldierSettings: {fileID: 114973641854613384}
+  layerMaskVisualSense:
+    serializedVersion: 2
+    m_Bits: 3584
   debugDrawVisualSense: 1
 --- !u!114 &114973641854613384
 MonoBehaviour:
@@ -1073,7 +1076,7 @@ MonoBehaviour:
   maxMoveSpeed: 3
   maxRotationalSpeed: 240
   maxHealth: 100
-  viewAngle: 60
+  viewAngle: 120
   viewDistance: 15
 --- !u!136 &136555068796291842
 CapsuleCollider:
