@@ -82,10 +82,8 @@ namespace CaptureTheFlagAI.Impl.Teams
 
         void Awake()
         {
-            teamA = new SoldierAITeam();
-            teamA.Name = "Team A";
-            teamB = new SoldierAITeam();
-            teamB.Name = "Team B";
+            teamA = new SoldierAITeam(TeamTypes.TeamA, "Team A");
+            teamB = new SoldierAITeam(TeamTypes.TeamB, "Team B");
         }
 
         void OnDrawGizmos()

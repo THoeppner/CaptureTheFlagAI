@@ -9,6 +9,7 @@ namespace CaptureTheFlagAI.Samples
 
     public class SniperAISample : SoldierAIBase
     {
+        public bool patrol;
         NavAgentSample navAgent;
 
         protected override void AwakeInternal()
@@ -22,7 +23,8 @@ namespace CaptureTheFlagAI.Samples
         // Use this for initialization
         void Start()
         {
-            navAgent.GeneratePath(Moveable.GetPosition(), new Vector3(11, 0 ,7));
+            if (patrol)
+                navAgent.GeneratePath(Moveable.GetPosition(), new Vector3(11, 0 ,7));
         }
 
         int counter = 0;
@@ -35,7 +37,7 @@ namespace CaptureTheFlagAI.Samples
                 Moveable.LookAt(navAgent.pathGenerated[0]);
                 Moveable.MoveTowards(navAgent.pathGenerated[0], 1);
             }
-            else
+            else if (patrol)
             {
                 if (counter == 0)
                     navAgent.GeneratePath(Moveable.GetPosition(), new Vector3(-11, 0, 7));

@@ -709,7 +709,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4459240300066966, guid: 6e6b10d685ef072419d12f8acdbd3574, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -2.79
+      value: -5
       objectReference: {fileID: 0}
     - target: {fileID: 4459240300066966, guid: 6e6b10d685ef072419d12f8acdbd3574, type: 2}
       propertyPath: m_LocalRotation.x
@@ -730,6 +730,11 @@ Prefab:
     - target: {fileID: 4459240300066966, guid: 6e6b10d685ef072419d12f8acdbd3574, type: 2}
       propertyPath: m_RootOrder
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114350387725912096, guid: 6e6b10d685ef072419d12f8acdbd3574,
+        type: 2}
+      propertyPath: viewAngle
+      value: 120
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6e6b10d685ef072419d12f8acdbd3574, type: 2}
@@ -789,7 +794,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4694231885693644, guid: f14a4395300e1494785db94617930e3d, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -1.37
+      value: 0.94
       objectReference: {fileID: 0}
     - target: {fileID: 4694231885693644, guid: f14a4395300e1494785db94617930e3d, type: 2}
       propertyPath: m_LocalPosition.y
@@ -797,7 +802,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4694231885693644, guid: f14a4395300e1494785db94617930e3d, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -2.745
+      value: -3.45
       objectReference: {fileID: 0}
     - target: {fileID: 4694231885693644, guid: f14a4395300e1494785db94617930e3d, type: 2}
       propertyPath: m_LocalRotation.x
@@ -818,6 +823,11 @@ Prefab:
     - target: {fileID: 4694231885693644, guid: f14a4395300e1494785db94617930e3d, type: 2}
       propertyPath: m_RootOrder
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114138699195137430, guid: f14a4395300e1494785db94617930e3d,
+        type: 2}
+      propertyPath: viewAngle
+      value: 120
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f14a4395300e1494785db94617930e3d, type: 2}
@@ -945,7 +955,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   teamASettings:
-    sniperPrefab: {fileID: 0}
+    sniperPrefab: {fileID: 1887864909056334, guid: 375befb780ed2f746b33806da9cd211e,
+      type: 2}
     infantryPrefab: {fileID: 0}
     gunnerPrefab: {fileID: 0}
     scoutPrefab: {fileID: 0}
@@ -957,7 +968,8 @@ MonoBehaviour:
     - position: {x: -20, y: 0, z: -22}
       soldierType: 2
   teamBSettings:
-    sniperPrefab: {fileID: 0}
+    sniperPrefab: {fileID: 1887864909056334, guid: 375befb780ed2f746b33806da9cd211e,
+      type: 2}
     infantryPrefab: {fileID: 0}
     gunnerPrefab: {fileID: 0}
     scoutPrefab: {fileID: 0}
@@ -965,9 +977,9 @@ MonoBehaviour:
     - position: {x: 20, y: 0, z: 20}
       soldierType: 0
     - position: {x: 20, y: 0, z: 18}
-      soldierType: 0
+      soldierType: 1
     - position: {x: 20, y: 0, z: 22}
-      soldierType: 0
+      soldierType: 1
 --- !u!1 &676320875
 GameObject:
   m_ObjectHideFlags: 0
@@ -1423,6 +1435,11 @@ Prefab:
     - target: {fileID: 4459240300066966, guid: 375befb780ed2f746b33806da9cd211e, type: 2}
       propertyPath: m_RootOrder
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 114973641854613384, guid: 375befb780ed2f746b33806da9cd211e,
+        type: 2}
+      propertyPath: viewAngle
+      value: 120
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 375befb780ed2f746b33806da9cd211e, type: 2}

@@ -6,7 +6,15 @@ namespace CaptureTheFlagAI.Impl.Teams
 {
     public class SoldierAITeam : Team
     {
-        List<SoldierAIBase> soldiers = new List<SoldierAIBase>();
+        private TeamTypes teamType;
+
+        private List<SoldierAIBase> soldiers = new List<SoldierAIBase>();
+
+        public SoldierAITeam(TeamTypes teamType, string name)
+        {
+            this.teamType = teamType;
+            this.Name = name;
+        }
 
         public void AddSoldier(SoldierAIBase soldier)
         {
@@ -19,6 +27,8 @@ namespace CaptureTheFlagAI.Impl.Teams
         #region Team
 
         public string Name { get; set; }
+
+        public TeamTypes TeamType { get { return teamType; } }
 
         public IList<SoldierAIBase> GetTeamMembers()
         {

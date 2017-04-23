@@ -106,8 +106,8 @@ namespace CaptureTheFlagAI.Impl.Soldier
             {
                 Color orgColor = Handles.color;
                 Handles.color = new Color(0, 0, 1, 0.2f);
-                Handles.DrawSolidArc(this.transform.position, this.transform.up, this.transform.forward, soldierSettings.ViewAngle, soldierSettings.ViewDistance);
-                Handles.DrawSolidArc(this.transform.position, this.transform.up, this.transform.forward, -soldierSettings.ViewAngle, soldierSettings.ViewDistance);
+                Handles.DrawSolidArc(this.transform.position, this.transform.up, this.transform.forward, soldierSettings.ViewAngle / 2, soldierSettings.ViewDistance);
+                Handles.DrawSolidArc(this.transform.position, this.transform.up, this.transform.forward, -soldierSettings.ViewAngle / 2, soldierSettings.ViewDistance);
                 Handles.color = orgColor;
             }
         }

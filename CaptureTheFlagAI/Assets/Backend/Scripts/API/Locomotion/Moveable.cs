@@ -20,7 +20,11 @@ namespace CaptureTheFlagAI.API.Locomotion
         /// <returns></returns>
         Vector3 GetMoveVector();
 
-        Vector3 GetRotation();
+        /// <summary>
+        /// Returns the Rotation of the object
+        /// </summary>
+        /// <returns></returns>
+        Quaternion GetRotation();
 
         /// <summary>
         /// Moves the object towards the destination. 

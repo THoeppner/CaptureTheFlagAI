@@ -51,9 +51,9 @@ namespace CaptureTheFlagAI.Impl.Locomotion
             return moveVector;
         }
 
-        public Vector3 GetRotation()
+        public Quaternion GetRotation()
         {
-            return transform.rotation.eulerAngles;
+            return transform.rotation;
         }
 
         public void LookAt(Vector3 position)

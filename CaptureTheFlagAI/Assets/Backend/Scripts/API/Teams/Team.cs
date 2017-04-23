@@ -8,6 +8,8 @@ namespace CaptureTheFlagAI.API.Teams
     {
         string Name { get; set; }
 
+        TeamTypes TeamType { get; }
+
         IList<SoldierAIBase> GetTeamMembers();
     }
 }

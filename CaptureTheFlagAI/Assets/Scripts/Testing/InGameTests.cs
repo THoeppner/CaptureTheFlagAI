@@ -13,6 +13,8 @@ public class InGameTests : MonoBehaviour
     public SoldierAIBase sniper;
     public SoldierAIBase infantry;
 
+    List<DetectedSoldier> detectedSoldiers = new List<DetectedSoldier>();
+
     Vector3 sniperTarget;
     Vector3 infantryTarget;
 
@@ -50,8 +52,8 @@ public class InGameTests : MonoBehaviour
         else
             infantry.Moveable.Stop();
 
-        sniper.Moveable.LookAt(target.position);
-        infantry.Moveable.LookAt(target.position);
+        //sniper.Moveable.LookAt(target.position);
+        //infantry.Moveable.LookAt(target.position);
 
         if (Input.GetKeyDown(KeyCode.A))
         {
@@ -63,6 +65,17 @@ public class InGameTests : MonoBehaviour
         {
             sniper.Moveable.IsCrouching = !sniper.Moveable.IsCrouching;
             infantry.Moveable.IsCrouching = !infantry.Moveable.IsCrouching;
+        }
+
+        detectedSoldiers.Clear();
+        if (sniper.VisualSense.GetDetectedSoldiers(detectedSoldiers).Count > 0)
+        {
+            Debug.Log("Sniper: I can see you: " + detectedSoldiers[0].SoldierType +  " of: " + detectedSoldiers[0].Team);
+        }
+        detectedSoldiers.Clear();
+        if (infantry.VisualSense.GetDetectedSoldiers(detectedSoldiers).Count > 0)
+        {
+            Debug.Log("Infantry: I can see you: " + detectedSoldiers[0].SoldierType + " of: " + detectedSoldiers[0].Team);
         }
     }
 }
