@@ -46,6 +46,11 @@ namespace CaptureTheFlagAI.Impl.Locomotion
             return transform.position;
         }
 
+        public Vector3 GetForwardVector()
+        {
+            return transform.forward;
+        }
+
         public Vector3 GetMoveVector()
         {
             return moveVector;

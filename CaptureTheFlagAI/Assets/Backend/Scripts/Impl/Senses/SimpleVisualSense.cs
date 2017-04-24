@@ -1,6 +1,7 @@
 ﻿using CaptureTheFlagAI.API.Senses;
 using CaptureTheFlagAI.API.Soldier;
 using CaptureTheFlagAI.Impl.Game;
+using CaptureTheFlagAI.Impl.Soldier;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -10,19 +11,18 @@ namespace CaptureTheFlagAI.Impl.Senses
 
     public class SimpleVisualSense : VisualSense
     {
-        protected Transform owner;
+        protected SoldierBase owner;
         protected float viewAngle;
         protected float viewDistance;
         protected LayerMask layerMask;
 
-        public SimpleVisualSense(Transform owner, float viewAngle, float viewDistance, LayerMask layerMask)
+        public SimpleVisualSense(SoldierBase owner, LayerMask layerMask)
         {
             this.owner = owner;
-            this.viewAngle = viewAngle;
-            this.viewDistance = viewDistance;
+            this.viewAngle = owner.GetStatistics().ViewAngle;
+            this.viewDistance = owner.GetStatistics().ViewDistance;
             this.layerMask = layerMask;
         }
-
         
         #region VisualSense
 
@@ -52,26 +52,22 @@ namespace CaptureTheFlagAI.Impl.Senses
 
         #endregion
 
-        bool IsSoldierVisible(SoldierAIBase s)
+        bool IsSoldierVisible(SoldierAIBase soldier)
         {
-            Vector3 toSoldier = s.Moveable.GetPosition() - owner.position;
+            Vector3 v1 = owner.GetAnatomy().GetHeadPosition();
+            Vector3 v2 = soldier.Anatomy.GetBreastPosition();
+            Vector3 toSoldier = v2 - v1;
             float viewAngleHalf = viewAngle / 2;
             float viewDistanceSqr = viewDistance * viewDistance;
 
-            if ((Vector3.Angle(this.owner.forward, toSoldier) > viewAngleHalf) || (toSoldier.sqrMagnitude > viewDistanceSqr))
+            if ((Vector3.Angle(owner.GetMoveable().GetForwardVector(), toSoldier) > viewAngleHalf) || (toSoldier.sqrMagnitude > viewDistanceSqr))
                 return false;
-
-            Vector3 v1 = owner.position;
-            v1.y = 1;
 
             RaycastHit hitInfo;
-            if (!Physics.Raycast(v1, toSoldier, out hitInfo, viewDistance, layerMask) ||
-                (hitInfo.transform.gameObject.GetInstanceID() != s.transform.gameObject.GetInstanceID()))
+            if (!Physics.Raycast(v1, toSoldier, out hitInfo, viewDistance, layerMask) || (hitInfo.transform.GetInstanceID() != soldier.transform.GetInstanceID()))
                 return false;
 
-            Vector3 v2 = s.Moveable.GetPosition();
-            v2.y = 1;
-            Debug.DrawLine(v1, v2);
+            // Debug.DrawLine(v1, v2);
 
             return true;
         }

@@ -773,16 +773,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
-    - target: {fileID: 114350387725912096, guid: 6e6b10d685ef072419d12f8acdbd3574,
-        type: 2}
-      propertyPath: viewAngle
-      value: 120
-      objectReference: {fileID: 0}
-    - target: {fileID: 114817613042471022, guid: 6e6b10d685ef072419d12f8acdbd3574,
-        type: 2}
-      propertyPath: debugDrawVisualSense
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 114817613042471022, guid: 6e6b10d685ef072419d12f8acdbd3574,
         type: 2}
       propertyPath: layerMaskVisualSense.m_Bits
@@ -877,6 +867,11 @@ Prefab:
     - target: {fileID: 4694231885693644, guid: f14a4395300e1494785db94617930e3d, type: 2}
       propertyPath: m_RootOrder
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114555573060532096, guid: f14a4395300e1494785db94617930e3d,
+        type: 2}
+      propertyPath: layerMaskVisualSense.m_Bits
+      value: 3584
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f14a4395300e1494785db94617930e3d, type: 2}

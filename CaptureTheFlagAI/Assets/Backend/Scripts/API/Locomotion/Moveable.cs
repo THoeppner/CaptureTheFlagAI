@@ -15,6 +15,12 @@ namespace CaptureTheFlagAI.API.Locomotion
         Vector3 GetPosition();
 
         /// <summary>
+        /// Returns the forward direction of the object
+        /// </summary>
+        /// <returns></returns>
+        Vector3 GetForwardVector();
+
+        /// <summary>
         /// Returns the current move vector of the object (magnitude is 1 or 0)
         /// </summary>
         /// <returns></returns>

@@ -30,6 +30,11 @@ namespace CaptureTheFlagAI.API.Soldier
             get { return soldier.GetStatistics(); }
         }
 
+        public Anatomy Anatomy
+        {
+            get { return soldier.GetAnatomy(); }
+        }
+
         public Team Team
         {
             get { return soldier.GetTeam(); }

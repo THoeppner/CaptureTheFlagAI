@@ -23,6 +23,9 @@ namespace CaptureTheFlagAI.Impl.Soldier
         protected SoldierSettings soldierSettings;
 
         [SerializeField]
+        protected SoldierAnatomy soldierAnatomy;
+
+        [SerializeField]
         private LayerMask layerMaskVisualSense;
 
         [SerializeField]
@@ -36,6 +39,8 @@ namespace CaptureTheFlagAI.Impl.Soldier
 
         protected VisualSense visualSense;
         public VisualSense GetVisualSense() { return visualSense; }
+
+        public Anatomy GetAnatomy() { return soldierAnatomy; }
 
         protected Team team;
         public Team GetTeam() { return team; }
@@ -77,7 +82,7 @@ namespace CaptureTheFlagAI.Impl.Soldier
 
         protected virtual void CreateSenses()
         {
-            visualSense = new SimpleVisualSense(this.transform, soldierSettings.ViewAngle, soldierSettings.ViewDistance, soldierSettings.Head, layerMaskVisualSense);
+            visualSense = new SimpleVisualSense(this, layerMaskVisualSense);
         }
 
         protected void Die()

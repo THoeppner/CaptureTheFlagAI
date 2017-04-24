@@ -177,6 +177,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1411769419837154
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4863494633703226}
+  - component: {fileID: 114138699195137430}
+  m_Layer: 0
+  m_Name: SoldierSettings
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1439493377323782
 GameObject:
   m_ObjectHideFlags: 1
@@ -479,9 +495,9 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4981143738550120}
-  - component: {fileID: 114138699195137430}
+  - component: {fileID: 114902211305930098}
   m_Layer: 0
-  m_Name: SoldierSettings
+  m_Name: SoldierAnatomy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -821,6 +837,7 @@ Transform:
   m_Children:
   - {fileID: 4278623866205056}
   - {fileID: 4037367664101426}
+  - {fileID: 4863494633703226}
   - {fileID: 4981143738550120}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -852,6 +869,19 @@ Transform:
   m_Father: {fileID: 4143057493594092}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!4 &4863494633703226
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1411769419837154}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4694231885693644}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4903283019316774
 Transform:
   m_ObjectHideFlags: 1
@@ -916,12 +946,12 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1958242420868694}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4694231885693644}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4986970518655698
 Transform:
@@ -1026,7 +1056,7 @@ MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1958242420868694}
+  m_GameObject: {fileID: 1411769419837154}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 543975533ff9e234292a34a3da0f5ae4, type: 3}
@@ -1037,6 +1067,7 @@ MonoBehaviour:
   maxHealth: 100
   viewAngle: 120
   viewDistance: 10
+  head: {fileID: 0}
 --- !u!114 &114235573654917490
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1088,10 +1119,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponSettings: {fileID: 114347920697311430}
   soldierSettings: {fileID: 114138699195137430}
+  soldierAnatomy: {fileID: 114902211305930098}
   layerMaskVisualSense:
     serializedVersion: 2
-    m_Bits: 3584
+    m_Bits: 0
   debugDrawVisualSense: 1
+--- !u!114 &114902211305930098
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1958242420868694}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f69ab8c7f03b39544b999c02ab689756, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  head: {fileID: 4415980092859566}
+  breast: {fileID: 4939554049722422}
 --- !u!136 &136372864900011024
 CapsuleCollider:
   m_ObjectHideFlags: 1
