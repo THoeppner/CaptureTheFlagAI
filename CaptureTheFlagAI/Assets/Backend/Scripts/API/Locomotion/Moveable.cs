@@ -50,7 +50,7 @@ namespace CaptureTheFlagAI.API.Locomotion
         /// Rotates the object toward the given position
         /// </summary>
         /// <param name="position"></param>
-        void LookAt(Vector3 position);
+        bool LookAt(Vector3 position);
 
         /// <summary>
         /// Stops the movement

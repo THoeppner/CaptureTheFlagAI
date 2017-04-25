@@ -25,11 +25,13 @@ namespace CaptureTheFlagAI.Impl.Teams
             teamASettings.spawnPositions.ForEach(s => {
                 SoldierBase soldier = SpawnSoldier(teamASettings, s);
                 AddSoldierToTeamA(soldier);
+                soldier.SoldierDiedEvent += OnSoldierDied;
             });
 
             teamBSettings.spawnPositions.ForEach(s => {
                 SoldierBase soldier = SpawnSoldier(teamBSettings, s);
                 AddSoldierToTeamB(soldier);
+                soldier.SoldierDiedEvent += OnSoldierDied;
             });
         }
 
@@ -64,6 +66,7 @@ namespace CaptureTheFlagAI.Impl.Teams
                 return;
 
             teamA.AddSoldier(soldier.GetComponent<SoldierAIBase>());
+            soldier.TeamMemberIndex = teamA.GetTeamMembers().Count;
             soldier.SetTeam(teamA);
             soldier.gameObject.layer = GameManager.Instance.LayerManager.LayerTeamA;
             GameManager.Instance.UIManager.AddSoldierToTeamA(soldier);
@@ -75,9 +78,20 @@ namespace CaptureTheFlagAI.Impl.Teams
                 return;
 
             teamB.AddSoldier(soldier.GetComponent<SoldierAIBase>());
+            soldier.TeamMemberIndex = teamB.GetTeamMembers().Count;
             soldier.SetTeam(teamB);
             soldier.gameObject.layer = GameManager.Instance.LayerManager.LayerTeamB;
             GameManager.Instance.UIManager.AddSoldierToTeamB(soldier);
+        }
+
+        private void OnSoldierDied(SoldierBase soldier)
+        {
+            if (soldier.GetTeam().TeamType == TeamTypes.TeamA)
+                teamA.RemoveSoldier(soldier.GetComponent<SoldierAIBase>());
+            else
+                teamB.RemoveSoldier(soldier.GetComponent<SoldierAIBase>());
+
+            Debug.Log("Removed Soldier from team");
         }
 
         #region MonoBeahviour

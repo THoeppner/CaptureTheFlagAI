@@ -7,6 +7,6 @@ namespace CaptureTheFlagAI.API.Senses
 {
     public interface VisualSense
     {
-        List<DetectedSoldier> GetDetectedSoldiers(List<DetectedSoldier> soldiers);
+        List<DetectedSoldier> GetDetectedSoldiers(List<DetectedSoldier> soldiers = null);
     }
 }

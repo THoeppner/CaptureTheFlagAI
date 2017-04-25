@@ -50,6 +50,11 @@ namespace CaptureTheFlagAI.API.Soldier
             get { return soldier.GetSoldierType(); }
         }
 
+        public int TeamMemberIndex
+        {
+            get { return soldier.TeamMemberIndex; }
+        }
+
         #region MonoBehaviour
 
         void Awake()

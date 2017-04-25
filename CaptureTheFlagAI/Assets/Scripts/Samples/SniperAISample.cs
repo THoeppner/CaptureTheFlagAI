@@ -9,7 +9,6 @@ namespace CaptureTheFlagAI.Samples
 
     public class SniperAISample : SoldierAIBase
     {
-        public bool patrol;
         NavAgentSample navAgent;
 
         protected override void AwakeInternal()
@@ -20,36 +19,37 @@ namespace CaptureTheFlagAI.Samples
             Assert.IsNotNull(navAgent, "No NavAgentSample component is attached to " + gameObject.name);
         }
 
-        // Use this for initialization
         void Start()
         {
-            if (patrol)
-                navAgent.GeneratePath(Moveable.GetPosition(), new Vector3(11, 0 ,7));
+            if (TeamMemberIndex == 1)
+                navAgent.GeneratePath(Moveable.GetPosition(), new Vector3(-20, 0 ,20));
+            else if (TeamMemberIndex == 2)
+                navAgent.GeneratePath(Moveable.GetPosition(), new Vector3(-5, 0, 5));
+            else 
+                navAgent.GeneratePath(Moveable.GetPosition(), new Vector3(20, 0, -20));
         }
 
-        int counter = 0;
-
-        // Update is called once per frame
         void Update()
         {
-            if (navAgent.pathGenerated.Count > 0)
+            List<DetectedSoldier> enemiesInSight = VisualSense.GetDetectedSoldiers().FindAll(s => s.Team != Team.TeamType);
+            if (enemiesInSight.Count > 0)
             {
+                Moveable.Stop();
+                Moveable.IsCrouching = true;
+                DetectedSoldier soldier = enemiesInSight[0];
+                if (Moveable.LookAt(soldier.Position))
+                {
+                    CurrentWeapon.Shoot();
+                }
+            }
+            else if (navAgent.pathGenerated.Count > 0)
+            {
+                Moveable.IsCrouching = false;
                 Moveable.LookAt(navAgent.pathGenerated[0]);
                 Moveable.MoveTowards(navAgent.pathGenerated[0], 1);
             }
-            else if (patrol)
-            {
-                if (counter == 0)
-                    navAgent.GeneratePath(Moveable.GetPosition(), new Vector3(-11, 0, 7));
-                else if (counter == 1)
-                    navAgent.GeneratePath(Moveable.GetPosition(), new Vector3(0, 0, -15));
-                else if (counter == 2)
-                    navAgent.GeneratePath(Moveable.GetPosition(), new Vector3(11, 0, 7));
-                else
-                    counter = -1;
-
-                counter++;
-            }
+            else
+                Moveable.Stop();
         }
     }
 }

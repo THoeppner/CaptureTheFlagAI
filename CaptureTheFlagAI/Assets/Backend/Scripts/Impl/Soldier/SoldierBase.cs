@@ -11,6 +11,7 @@ using CaptureTheFlagAI.API.Teams;
 using CaptureTheFlagAI.API.Senses;
 using CaptureTheFlagAI.Impl.Senses;
 using UnityEditor;
+using System;
 
 namespace CaptureTheFlagAI.Impl.Soldier
 {
@@ -50,6 +51,10 @@ namespace CaptureTheFlagAI.Impl.Soldier
 
         protected SoldierTypes soldierType;
         public SoldierTypes GetSoldierType() { return soldierType; }
+
+        public int TeamMemberIndex { get; set; }
+
+        public Action<SoldierBase> SoldierDiedEvent;
 
         private AnimatorController animatorController;
 
@@ -91,12 +96,18 @@ namespace CaptureTheFlagAI.Impl.Soldier
             weapon.DisablePermanently();
             GetComponent<Collider>().enabled = false;
             GetComponent<Rigidbody>().isKinematic = true;
+
+            if (SoldierDiedEvent != null)
+                SoldierDiedEvent(this);
         }
 
         #region Hitable
 
         public void Hit(int damage)
         {
+            if (soldierSettings.IsDead) // already dead
+                return;
+
             animatorController.Hit();
             soldierSettings.Health -= damage;
 

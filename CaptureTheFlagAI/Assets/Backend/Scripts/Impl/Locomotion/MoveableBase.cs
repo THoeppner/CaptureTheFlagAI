@@ -61,14 +61,18 @@ namespace CaptureTheFlagAI.Impl.Locomotion
             return transform.rotation;
         }
 
-        public void LookAt(Vector3 position)
+        public bool LookAt(Vector3 position)
         {
-            if (IsDisabled)
-                return;
-
             position.y = transform.position.y;
-            Quaternion lookRotation = Quaternion.LookRotation(position - transform.position);
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, lookRotation, maxRotationalSpeed * Time.deltaTime);
+            Vector3 toPosition = position - transform.position;
+
+            if (!IsDisabled)
+            {
+                Quaternion lookRotation = Quaternion.LookRotation(toPosition);
+                transform.rotation = Quaternion.RotateTowards(transform.rotation, lookRotation, maxRotationalSpeed * Time.deltaTime);
+            }
+
+            return Vector3.Angle(transform.forward, toPosition) < 0.1f;
         }
 
         public void MoveTowards(Vector3 destination, float speed)
@@ -108,6 +112,9 @@ namespace CaptureTheFlagAI.Impl.Locomotion
 
         private void CreateEnableTimer(float seconds)
         {
+            if (seconds == 0)
+                return;
+
             Timer enableTimer = new Timer(seconds * 1000);
             enableTimer.AutoReset = false;
             enableTimer.Elapsed += OnEnableTimerElapsed;

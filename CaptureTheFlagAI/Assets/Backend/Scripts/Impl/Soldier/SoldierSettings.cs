@@ -21,12 +21,6 @@ namespace CaptureTheFlagAI.Impl.Soldier
         [SerializeField]
         private float viewDistance;
 
-        /// <summary>
-        /// Is used for the visual sense
-        /// </summary>
-        [SerializeField]
-        private Transform head;
-
         private int health;
 
         #region Statistics

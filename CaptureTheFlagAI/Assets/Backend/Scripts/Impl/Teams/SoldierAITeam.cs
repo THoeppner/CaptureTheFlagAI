@@ -20,8 +20,14 @@ namespace CaptureTheFlagAI.Impl.Teams
         {
             if (!soldier)
                 return;
-
             soldiers.Add(soldier);
+        }
+
+        public void RemoveSoldier(SoldierAIBase soldier)
+        {
+            if (!soldier)
+                return;
+            soldiers.Remove(soldier);
         }
 
         #region Team

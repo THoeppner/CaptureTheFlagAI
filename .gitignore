@@ -3,3 +3,4 @@
 *.sln
 *.csproj
 /CaptureTheFlagAI/.vs
+obj
