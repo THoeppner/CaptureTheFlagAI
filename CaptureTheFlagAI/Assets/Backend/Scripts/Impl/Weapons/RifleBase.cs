@@ -29,6 +29,19 @@ namespace CaptureTheFlagAI.Impl.Weapons
             this.settings = settings;
         }
 
+        #region Weapon
+
+        public bool IsHitPossible(int soldierId)
+        {
+            // TODO: Define a correct range for the hit test (like level dimension or shot range)
+            RaycastHit hitInfo;
+            if (Physics.SphereCast(settings.Muzzle.position, settings.BulletRadius, settings.Muzzle.rotation.eulerAngles, out hitInfo, 200f, GameManager.Instance.LayerManager.LayerMaskWeaponHitTest))
+            {
+                return (hitInfo.transform.gameObject.GetInstanceID() == soldierId);
+            }
+            return false;
+        }
+
         public void DisablePermanently()
         {
             isDisabledPermanently = true;
@@ -44,6 +57,8 @@ namespace CaptureTheFlagAI.Impl.Weapons
             animatorController.Shoot();
             GameManager.Instance.PoolManager.Get(settings.Bullet, settings.Muzzle.position, settings.Muzzle.rotation);
         }
+
+        #endregion
 
         protected bool CanShoot()
         {

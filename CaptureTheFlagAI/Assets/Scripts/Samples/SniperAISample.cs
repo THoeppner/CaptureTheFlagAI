@@ -39,7 +39,10 @@ namespace CaptureTheFlagAI.Samples
                 DetectedSoldier soldier = enemiesInSight[0];
                 if (Moveable.LookAt(soldier.Position))
                 {
-                    CurrentWeapon.Shoot();
+                    if (CurrentWeapon.IsHitPossible(enemiesInSight[0].Id))
+                        CurrentWeapon.Shoot();
+                    else
+                        Debug.Log("No shot possible");
                 }
             }
             else if (navAgent.pathGenerated.Count > 0)

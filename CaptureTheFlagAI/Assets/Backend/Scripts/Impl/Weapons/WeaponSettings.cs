@@ -14,6 +14,13 @@ namespace CaptureTheFlagAI.Impl.Weapons
         private float coolDownTime;
         public float CoolDownTime { get { return coolDownTime; } }
 
+        /// <summary>
+        /// Is used for the hit possible check of the wepaon interface
+        /// </summary>
+        [SerializeField]
+        private float bulletRadius;
+        public float BulletRadius { get { return bulletRadius; } }
+
         [SerializeField]
         GameObject bullet;
         public GameObject Bullet { get { return bullet; } }

@@ -1067,7 +1067,6 @@ MonoBehaviour:
   maxHealth: 100
   viewAngle: 120
   viewDistance: 10
-  head: {fileID: 0}
 --- !u!114 &114235573654917490
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1092,6 +1091,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shotTimeSpan: 0.5
   coolDownTime: 0.5
+  bulletRadius: 0.07
   bullet: {fileID: 1592714807784176, guid: 2fc6c3d3aabfea24380db3913916b213, type: 2}
   muzzle: {fileID: 4711782304697892}
 --- !u!114 &114429625933349232

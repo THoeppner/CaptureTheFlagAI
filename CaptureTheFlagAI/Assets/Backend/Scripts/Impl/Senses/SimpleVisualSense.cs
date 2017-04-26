@@ -35,7 +35,8 @@ namespace CaptureTheFlagAI.Impl.Senses
             {
                 if (!IsSoldierVisible(s))
                     continue;
-                DetectedSoldier d = new DetectedSoldier() { Position = s.Moveable.GetPosition(), Rotation = s.Moveable.GetRotation(), Team = s.Team.TeamType, SoldierType = s.SoldierType };
+                DetectedSoldier d = new DetectedSoldier() { Position = s.Moveable.GetPosition(), Rotation = s.Moveable.GetRotation(), Team = s.Team.TeamType,
+                    SoldierType = s.SoldierType, Id = s.gameObject.GetInstanceID() };
                 soldiers.Add(d);
             }
 
@@ -43,7 +44,8 @@ namespace CaptureTheFlagAI.Impl.Senses
             {
                 if (!IsSoldierVisible(s))
                     continue;
-                DetectedSoldier d = new DetectedSoldier() { Position = s.Moveable.GetPosition(), Rotation = s.Moveable.GetRotation(), Team = s.Team.TeamType, SoldierType = s.SoldierType };
+                DetectedSoldier d = new DetectedSoldier() { Position = s.Moveable.GetPosition(), Rotation = s.Moveable.GetRotation(), Team = s.Team.TeamType,
+                    SoldierType = s.SoldierType, Id = s.gameObject.GetInstanceID() };
                 soldiers.Add(d);
             }
 

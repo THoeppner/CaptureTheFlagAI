@@ -758,6 +758,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   layerNameTeamA: SoldierTeamA
   layerNameTeamB: SoldierTeamB
+  layerNameObstacles: Obstacles
 --- !u!1 &448975285
 GameObject:
   m_ObjectHideFlags: 0

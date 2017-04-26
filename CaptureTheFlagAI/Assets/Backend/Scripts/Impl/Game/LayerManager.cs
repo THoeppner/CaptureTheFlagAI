@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace CaptureTheFlagAI.Impl.Game
 {
@@ -13,16 +11,22 @@ namespace CaptureTheFlagAI.Impl.Game
         [SerializeField]
         string layerNameTeamB;
 
-        private int layerTeamA;
-        public int LayerTeamA { get { return layerTeamA; } }
+        [SerializeField]
+        string layerNameObstacles;
 
-        private int layerTeamB;
-        public int LayerTeamB { get { return layerTeamB; } }
+        public int LayerTeamA { get; private set; }
+        public int LayerTeamB { get; private set; }
+        public int LayerObstacles { get; private set; }
+
+        public LayerMask LayerMaskWeaponHitTest { get; private set; }
 
         public void Initialize()
         {
-            layerTeamA = LayerMask.NameToLayer(layerNameTeamA);
-            layerTeamB = LayerMask.NameToLayer(layerNameTeamB);
+            LayerTeamA = LayerMask.NameToLayer(layerNameTeamA);
+            LayerTeamB = LayerMask.NameToLayer(layerNameTeamB);
+            LayerObstacles = LayerMask.NameToLayer(layerNameObstacles);
+
+            LayerMaskWeaponHitTest = LayerMask.GetMask(layerNameTeamA, layerNameTeamB, layerNameObstacles);
         }
     }
 }
