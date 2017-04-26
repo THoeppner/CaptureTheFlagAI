@@ -69,7 +69,7 @@ namespace CaptureTheFlagAI.Impl.Senses
             if (!Physics.Raycast(v1, toSoldier, out hitInfo, viewDistance, layerMask) || (hitInfo.transform.GetInstanceID() != soldier.transform.GetInstanceID()))
                 return false;
 
-            // Debug.DrawLine(v1, v2);
+            Debug.DrawLine(v1, v2);
 
             return true;
         }
