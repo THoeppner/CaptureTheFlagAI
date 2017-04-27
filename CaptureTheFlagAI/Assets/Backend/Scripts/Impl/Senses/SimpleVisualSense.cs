@@ -57,7 +57,7 @@ namespace CaptureTheFlagAI.Impl.Senses
         bool IsSoldierVisible(SoldierAIBase soldier)
         {
             Vector3 v1 = owner.GetAnatomy().GetHeadPosition();
-            Vector3 v2 = soldier.Anatomy.GetBreastPosition();
+            Vector3 v2 = soldier.Anatomy.GetHeadPosition();
             Vector3 toSoldier = v2 - v1;
             float viewAngleHalf = viewAngle / 2;
             float viewDistanceSqr = viewDistance * viewDistance;
@@ -66,8 +66,11 @@ namespace CaptureTheFlagAI.Impl.Senses
                 return false;
 
             RaycastHit hitInfo;
-            if (!Physics.Raycast(v1, toSoldier, out hitInfo, viewDistance, layerMask) || (hitInfo.transform.GetInstanceID() != soldier.transform.GetInstanceID()))
+            if (!Physics.SphereCast(v1, 0.2f, toSoldier, out hitInfo, viewDistance, layerMask) || (hitInfo.transform.GetInstanceID() != soldier.transform.GetInstanceID()))
                 return false;
+
+            //if (!Physics.Raycast(v1, toSoldier, out hitInfo, viewDistance, layerMask) || (hitInfo.transform.GetInstanceID() != soldier.transform.GetInstanceID()))
+            //    return false;
 
             Debug.DrawLine(v1, v2);
 

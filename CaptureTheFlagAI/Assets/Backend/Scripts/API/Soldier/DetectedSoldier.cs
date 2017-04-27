@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace CaptureTheFlagAI.API.Soldier
 {
-    public struct DetectedSoldier
+    public struct DetectedSoldier 
     {
         /// <summary>
         /// The Id of the gameobject of the soldier

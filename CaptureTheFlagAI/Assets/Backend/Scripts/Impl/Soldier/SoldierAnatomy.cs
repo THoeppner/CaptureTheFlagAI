@@ -2,6 +2,7 @@
 using CaptureTheFlagAI.API.Soldier;
 using UnityEngine;
 using UnityEngine.Assertions;
+using CaptureTheFlagAI.API.Locomotion;
 
 namespace CaptureTheFlagAI.Impl.Soldier
 {
@@ -14,18 +15,18 @@ namespace CaptureTheFlagAI.Impl.Soldier
         private Transform head;
 
         [SerializeField]
-        private Transform breast;
+        private Transform headCrouching;
+
+        public Moveable Moveable { get; set; }
 
         #region Anatomy
 
         public Vector3 GetHeadPosition()
         {
-            return head.position;
-        }
-
-        public Vector3 GetBreastPosition()
-        {
-            return breast.position;
+            if (Moveable.IsCrouching)
+                return headCrouching.position;
+            else
+                return head.position;
         }
 
         #endregion
@@ -35,7 +36,7 @@ namespace CaptureTheFlagAI.Impl.Soldier
         void Awake()
         {
             Assert.IsNotNull(head, "The head field isn't set for SoldierAnatomy " + gameObject.name);
-            Assert.IsNotNull(breast, "The breast field isn't set for SoldierAnatomy " + gameObject.name);
+            Assert.IsNotNull(headCrouching, "The headCrouching field isn't set for SoldierAnatomy " + gameObject.name);
         }
 
         #endregion

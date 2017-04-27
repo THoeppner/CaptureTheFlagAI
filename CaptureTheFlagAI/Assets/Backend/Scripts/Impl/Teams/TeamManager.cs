@@ -25,13 +25,15 @@ namespace CaptureTheFlagAI.Impl.Teams
             teamASettings.spawnPositions.ForEach(s => {
                 SoldierBase soldier = SpawnSoldier(teamASettings, s);
                 AddSoldierToTeamA(soldier);
-                soldier.SoldierDiedEvent += OnSoldierDied;
+                if (soldier)
+                    soldier.SoldierDiedEvent += OnSoldierDied;
             });
 
             teamBSettings.spawnPositions.ForEach(s => {
                 SoldierBase soldier = SpawnSoldier(teamBSettings, s);
                 AddSoldierToTeamB(soldier);
-                soldier.SoldierDiedEvent += OnSoldierDied;
+                if (soldier)
+                    soldier.SoldierDiedEvent += OnSoldierDied;
             });
         }
 

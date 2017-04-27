@@ -22,10 +22,10 @@ namespace CaptureTheFlagAI.Samples
         void Start()
         {
             if (TeamMemberIndex == 1)
-                navAgent.GeneratePath(Moveable.GetPosition(), new Vector3(-20, 0 ,20));
-            else if (TeamMemberIndex == 2)
                 navAgent.GeneratePath(Moveable.GetPosition(), new Vector3(-5, 0, 5));
-            else 
+            else if (TeamMemberIndex == 2)
+                navAgent.GeneratePath(Moveable.GetPosition(), new Vector3(-20, 0, 20));
+            else
                 navAgent.GeneratePath(Moveable.GetPosition(), new Vector3(20, 0, -20));
         }
 
@@ -47,7 +47,7 @@ namespace CaptureTheFlagAI.Samples
             {
                 Moveable.IsCrouching = false;
                 Moveable.LookAt(navAgent.pathGenerated[0]);
-                Moveable.MoveTowards(navAgent.pathGenerated[0], 1);
+                Moveable.MoveTowards(navAgent.pathGenerated[0], 1f);
             }
             else
                 Moveable.Stop();

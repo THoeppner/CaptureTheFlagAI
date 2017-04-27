@@ -110,22 +110,6 @@ namespace CaptureTheFlagAI.Impl.Locomotion
             CreateEnableTimer(seconds);
         }
 
-        private void CreateEnableTimer(float seconds)
-        {
-            if (seconds == 0)
-                return;
-
-            Timer enableTimer = new Timer(seconds * 1000);
-            enableTimer.AutoReset = false;
-            enableTimer.Elapsed += OnEnableTimerElapsed;
-            enableTimer.Start();
-        }
-
-        private void OnEnableTimerElapsed(object sender, ElapsedEventArgs e)
-        {
-            isDisabledLimited = false;
-        }
-
         public bool IsCrouching
         {
             get { return isCrouching; }
@@ -146,5 +130,21 @@ namespace CaptureTheFlagAI.Impl.Locomotion
         public bool IsDisabled { get { return isDisabledLimited || isDisabledPermanently; } }
 
         #endregion
+
+        private void CreateEnableTimer(float seconds)
+        {
+            if (seconds == 0)
+                return;
+
+            Timer enableTimer = new Timer(seconds * 1000);
+            enableTimer.AutoReset = false;
+            enableTimer.Elapsed += OnEnableTimerElapsed;
+            enableTimer.Start();
+        }
+
+        private void OnEnableTimerElapsed(object sender, ElapsedEventArgs e)
+        {
+            isDisabledLimited = false;
+        }
     }
 }

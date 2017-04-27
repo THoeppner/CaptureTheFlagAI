@@ -14,13 +14,5 @@ namespace CaptureTheFlagAI.API.Soldier
         /// </summary>
         /// <returns></returns>
         Vector3 GetHeadPosition();
-
-        /// <summary>
-        /// Delivers the position of the breast
-        /// </summary>
-        /// <returns></returns>
-        Vector3 GetBreastPosition();
-
-
     }
 }
