@@ -32,17 +32,21 @@ namespace CaptureTheFlagAI.Impl.Weapons
 
         #region Weapon
 
+        public int LastHitCheckObjectId { get; protected set; }
+        
         public bool IsHitPossible(int soldierId)
         {
             // TODO: Define a correct range for the hit test (like level dimension or shot range)
             Vector3 v1 = settings.Muzzle.position;
             Vector3 v2 = settings.Muzzle.position + settings.Muzzle.forward * 200;
             Debug.DrawLine(v1, v2);
+
+            LastHitCheckObjectId = -1;
             RaycastHit hitInfo;
             if (Physics.SphereCast(settings.Muzzle.position, settings.BulletRadius, settings.Muzzle.forward, out hitInfo, 100f, GameManager.Instance.LayerManager.LayerMaskWeaponHitTest))
-                return (hitInfo.transform.gameObject.GetInstanceID() == soldierId);
+                LastHitCheckObjectId = hitInfo.transform.gameObject.GetInstanceID();
 
-            return false;
+            return LastHitCheckObjectId == soldierId;
         }
 
         public void DisablePermanently()

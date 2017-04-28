@@ -24,5 +24,10 @@ namespace CaptureTheFlagAI.API.Weapons
         /// <param name="soldierId"></param>
         /// <returns></returns>
         bool IsHitPossible(int soldierId);
+
+        /// <summary>
+        /// Delivers the game object id of the last hit check. -1 if the last check hits nothing
+        /// </summary>
+        int LastHitCheckObjectId { get; }
     }
 }

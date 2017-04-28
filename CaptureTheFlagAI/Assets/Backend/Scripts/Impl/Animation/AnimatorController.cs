@@ -1,4 +1,5 @@
-﻿using CaptureTheFlagAI.API.Locomotion;
+﻿using CaptureTheFlagAI.API.Interaction;
+using CaptureTheFlagAI.API.Locomotion;
 using CaptureTheFlagAI.API.Soldier;
 using CaptureTheFlagAI.Impl.Soldier;
 using UnityEngine;
@@ -27,11 +28,6 @@ namespace CaptureTheFlagAI.Impl.Animation
             animator.SetTrigger(ShootHash);
         }
 
-        public void Hit()
-        {
-            animator.SetTrigger(HitHash);
-        }
-
         public void Crouch()
         {
             animator.SetLayerWeight(crouchingLayerIdx, 1);
@@ -42,6 +38,15 @@ namespace CaptureTheFlagAI.Impl.Animation
             animator.SetLayerWeight(crouchingLayerIdx, 0);
         }
 
+        #region Events
+
+        private void OnSoldierHit(HitInformation hitInformation)
+        {
+            animator.SetTrigger(HitHash);
+        }
+
+        #endregion
+
         #region MonoBehaviour
 
         void Start()
@@ -51,6 +56,7 @@ namespace CaptureTheFlagAI.Impl.Animation
             SoldierBase soldier = GetComponent<SoldierBase>();
             moveable = soldier.GetMoveable();
             statistics = soldier.GetStatistics();
+            soldier.SoldierHitEvent += OnSoldierHit;
 
             crouchingLayerIdx = animator.GetLayerIndex(CrouchingLayerName);
         }

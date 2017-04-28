@@ -6,7 +6,6 @@ using CaptureTheFlagAI.Impl.Locomotion;
 using CaptureTheFlagAI.Impl.Weapons;
 using UnityEngine;
 using UnityEngine.Assertions;
-using CaptureTheFlagAI.Impl.Animation;
 using CaptureTheFlagAI.API.Teams;
 using CaptureTheFlagAI.API.Senses;
 using CaptureTheFlagAI.Impl.Senses;
@@ -57,16 +56,11 @@ namespace CaptureTheFlagAI.Impl.Soldier
         public Action<SoldierBase> SoldierDiedEvent;
         public Action<HitInformation> SoldierHitEvent;
 
-        private AnimatorController animatorController;
-
         public void Initialize()
         {
             Assert.IsNotNull(weaponSettings, "The WeaponSettings field isn't set for soldier " + gameObject.name);
             Assert.IsNotNull(soldierSettings, "The SoldierSettings field isn't set for soldier " + gameObject.name);
             Assert.IsNotNull(soldierAnatomy, "The SoldierAnatomy field isn't set for soldier " + gameObject.name);
-
-            animatorController = GetComponent<AnimatorController>();
-            Assert.IsNotNull(animatorController, "No AnimatorController is attached to game object " + gameObject.name);
 
             InitializeInternal();
 
@@ -112,7 +106,6 @@ namespace CaptureTheFlagAI.Impl.Soldier
             if (soldierSettings.IsDead) // already dead
                 return;
 
-            animatorController.Hit();
             soldierSettings.Health -= hitInformation.Damage;
 
             if (SoldierHitEvent != null)
