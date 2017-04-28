@@ -1,4 +1,6 @@
-﻿using CaptureTheFlagAI.API.Soldier;
+﻿using CaptureTheFlagAI.API.Map;
+using CaptureTheFlagAI.API.Soldier;
+using CaptureTheFlagAI.Impl.Game;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,9 +13,13 @@ namespace CaptureTheFlagAI.Samples
     {
         NavAgentSample navAgent;
 
+        ObjectInformation infoBlockingObj;
+
         protected override void AwakeInternal()
         {
             base.AwakeInternal();
+
+            infoBlockingObj.GameObjectId = -1;
 
             navAgent = GetComponent<NavAgentSample>();
             Assert.IsNotNull(navAgent, "No NavAgentSample component is attached to " + gameObject.name);
@@ -41,6 +47,14 @@ namespace CaptureTheFlagAI.Samples
                 {
                     if (CurrentWeapon.IsHitPossible(enemiesInSight[0].Id))
                         CurrentWeapon.Shoot();
+                    else
+                    {
+                        if (GameManager.Instance.MapManager.GetObjectInformation(CurrentWeapon.LastHitCheckObjectId, out infoBlockingObj))
+                        {
+
+
+                        }
+                    }
                 }
             }
             else if (navAgent.pathGenerated.Count > 0)
@@ -51,6 +65,16 @@ namespace CaptureTheFlagAI.Samples
             }
             else
                 Moveable.Stop();
+        }
+
+        private void OnDrawGizmos()
+        {
+            if (infoBlockingObj.GameObjectId == -1)
+                return;
+
+            Debug.Log("Object in LOS: " + infoBlockingObj.Name+ "; " + infoBlockingObj.Center);
+            Gizmos.color = Color.yellow;
+            Gizmos.DrawWireCube(infoBlockingObj.Center, infoBlockingObj.Size);
         }
     }
 }
