@@ -1,4 +1,5 @@
 ﻿using CaptureTheFlagAI.API.Locomotion;
+using CaptureTheFlagAI.API.Projectiles;
 using CaptureTheFlagAI.API.Weapons;
 using CaptureTheFlagAI.Impl.Animation;
 using CaptureTheFlagAI.Impl.Game;
@@ -57,7 +58,9 @@ namespace CaptureTheFlagAI.Impl.Weapons
             moveable.DisableForTimeSpan(settings.ShotTimeSpan);
             lastShootTime = Time.time;
             animatorController.Shoot();
-            GameManager.Instance.PoolManager.Get(settings.Bullet, settings.Muzzle.position, settings.Muzzle.rotation);
+            Projectile p = GameManager.Instance.PoolManager.Get(settings.Bullet, settings.Muzzle.position, settings.Muzzle.rotation).GetComponent<Projectile>();
+            if (p != null)
+                p.SourcePosition = moveable.GetPosition();
         }
 
         #endregion

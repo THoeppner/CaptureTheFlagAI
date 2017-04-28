@@ -2,23 +2,30 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using CaptureTheFlagAI.API.Interaction;
 
 namespace CaptureTheFlagAI.Samples
 {
-
     public class InfantryAISample : SoldierAIBase
     {
+        bool hit;
+        Vector3 hitPosition;
 
-        // Use this for initialization
-        void Start()
+        protected override void OnSoldierDied()
         {
-
+            Debug.Log("I'm dying");
         }
 
-        // Update is called once per frame
-        void Update()
+        protected override void OnSoldierHit(HitInformation hitInformation)
         {
+            hitPosition = hitInformation.PositionSource;
+            hit = true;
+        }
 
+        private void Update()
+        {
+            if (hit)
+                Moveable.LookAt(hitPosition);
         }
     }
 }

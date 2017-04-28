@@ -1,4 +1,6 @@
-﻿using CaptureTheFlagAI.API.Interaction;
+﻿using System;
+using CaptureTheFlagAI.API.Interaction;
+using CaptureTheFlagAI.API.Projectiles;
 using CaptureTheFlagAI.Impl.Game;
 using CaptureTheFlagAI.Impl.Pool;
 using UnityEngine;
@@ -7,7 +9,7 @@ using UnityEngine.Assertions;
 namespace CaptureTheFlagAI.Impl.Projectiles
 {
 
-    public class Bullet : MonoBehaviour
+    public class Bullet : MonoBehaviour, Projectile
     {
         [SerializeField]
         private float speed;
@@ -16,6 +18,14 @@ namespace CaptureTheFlagAI.Impl.Projectiles
         private int damage;
 
         private new Rigidbody rigidbody;
+
+        #region Projectile
+
+        public Vector3 SourcePosition { get; set; }
+
+        #endregion
+
+        #region MonoBehaviour
 
         void Awake()
         {
@@ -38,9 +48,11 @@ namespace CaptureTheFlagAI.Impl.Projectiles
         {
             Hitable hitable = collision.gameObject.GetComponent<Hitable>();
             if (hitable != null)
-                hitable.Hit(damage);
+                hitable.Hit(new HitInformation() { Damage = damage, PositionSource = SourcePosition } );
 
             GameManager.Instance.PoolManager.Put(gameObject);
         }
+
+        #endregion
     }
 }

@@ -92,8 +92,6 @@ namespace CaptureTheFlagAI.Impl.Teams
                 teamA.RemoveSoldier(soldier.GetComponent<SoldierAIBase>());
             else
                 teamB.RemoveSoldier(soldier.GetComponent<SoldierAIBase>());
-
-            Debug.Log("Removed Soldier from team");
         }
 
         #region MonoBeahviour

@@ -18,15 +18,15 @@ namespace CaptureTheFlagAI.Impl.Teams
 
         public void AddSoldier(SoldierAIBase soldier)
         {
-            if (!soldier)
-                return;
+            if (!soldier) return;
+
             soldiers.Add(soldier);
         }
 
         public void RemoveSoldier(SoldierAIBase soldier)
         {
-            if (!soldier)
-                return;
+            if (!soldier) return;
+
             soldiers.Remove(soldier);
         }
 

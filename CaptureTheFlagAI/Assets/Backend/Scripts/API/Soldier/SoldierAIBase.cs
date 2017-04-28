@@ -1,4 +1,5 @@
-﻿using CaptureTheFlagAI.API.Locomotion;
+﻿using CaptureTheFlagAI.API.Interaction;
+using CaptureTheFlagAI.API.Locomotion;
 using CaptureTheFlagAI.API.Senses;
 using CaptureTheFlagAI.API.Teams;
 using CaptureTheFlagAI.API.Weapons;
@@ -63,10 +64,38 @@ namespace CaptureTheFlagAI.API.Soldier
             Assert.IsNotNull(soldier, "No SoldierBase component is attached to gameobject " + gameObject.name);
             soldier.Initialize();
 
+            // Register the event handler
+            soldier.SoldierDiedEvent += OnSoldierDiedInternal;
+            soldier.SoldierHitEvent += OnSoldierHit;
+
             AwakeInternal();
         }
 
         protected virtual void AwakeInternal() { }
+
+        #endregion
+
+        #region Events
+
+        /// <summary>
+        /// This is an internal wrapper to hide the SoldierBase object
+        /// </summary>
+        /// <param name="soldier"></param>
+        private void OnSoldierDiedInternal(SoldierBase soldier)
+        {
+            OnSoldierDied();
+        }
+
+        /// <summary>
+        /// This method is called when the soldier died
+        /// </summary>
+        protected virtual void OnSoldierDied() { }
+
+        /// <summary>
+        /// Is called when the soldier is hit
+        /// </summary>
+        /// <param name="hitInformation"></param>
+        protected virtual void OnSoldierHit(HitInformation hitInformation) { }
 
         #endregion
     }

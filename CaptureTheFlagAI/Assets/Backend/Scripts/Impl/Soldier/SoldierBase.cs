@@ -55,6 +55,7 @@ namespace CaptureTheFlagAI.Impl.Soldier
         public int TeamMemberIndex { get; set; }
 
         public Action<SoldierBase> SoldierDiedEvent;
+        public Action<HitInformation> SoldierHitEvent;
 
         private AnimatorController animatorController;
 
@@ -106,13 +107,16 @@ namespace CaptureTheFlagAI.Impl.Soldier
 
         #region Hitable
 
-        public void Hit(int damage)
+        public void Hit(HitInformation hitInformation)
         {
             if (soldierSettings.IsDead) // already dead
                 return;
 
             animatorController.Hit();
-            soldierSettings.Health -= damage;
+            soldierSettings.Health -= hitInformation.Damage;
+
+            if (SoldierHitEvent != null)
+                SoldierHitEvent(hitInformation);
 
             if (soldierSettings.IsDead)
                 Die();
