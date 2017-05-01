@@ -1,4 +1,5 @@
 ﻿using CaptureTheFlagAI.API.Map;
+using CaptureTheFlagAI.Impl.DebugTools;
 using CaptureTheFlagAI.Impl.Map;
 using CaptureTheFlagAI.Impl.Pool;
 using CaptureTheFlagAI.Impl.Teams;
@@ -32,6 +33,10 @@ namespace CaptureTheFlagAI.Impl.Game
         [SerializeField]
         SimpleMapManager mapManager;
         public MapManager MapManager { get { return mapManager; } }
+
+        [SerializeField]
+        DebugTool debugTool;
+        public DebugTool DebugTool { get { return debugTool; } }
 
         void Awake()
         {

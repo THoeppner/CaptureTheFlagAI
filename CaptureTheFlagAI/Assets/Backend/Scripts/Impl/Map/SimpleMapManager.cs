@@ -1,8 +1,6 @@
 ﻿using CaptureTheFlagAI.API.Map;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System;
 using UnityEngine.Assertions;
 
 namespace CaptureTheFlagAI.Impl.Map
@@ -24,7 +22,6 @@ namespace CaptureTheFlagAI.Impl.Map
         {
             staticObjects.Clear();
             PutRecursiveStaticChildsToMap(level.transform);
-            Debug.Log("Found " + staticObjects.Count + " static objects");
         }
 
         public bool GetObjectInformation(int objectId, out ObjectInformation info)

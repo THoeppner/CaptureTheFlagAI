@@ -1,7 +1,6 @@
 ﻿using CaptureTheFlagAI.API.Map;
 using CaptureTheFlagAI.API.Soldier;
 using CaptureTheFlagAI.Impl.Game;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Assertions;
@@ -69,12 +68,7 @@ namespace CaptureTheFlagAI.Samples
 
         private void OnDrawGizmos()
         {
-            if (infoBlockingObj.GameObjectId == -1)
-                return;
-
-            Debug.Log("Object in LOS: " + infoBlockingObj.Name+ "; " + infoBlockingObj.Center);
-            Gizmos.color = Color.yellow;
-            Gizmos.DrawWireCube(infoBlockingObj.Center, infoBlockingObj.Size);
+            GameManager.Instance.DebugTool.DrawObjectInformation(infoBlockingObj);
         }
     }
 }
